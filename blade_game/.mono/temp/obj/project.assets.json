@@ -1,0 +1,70 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "FSharpCode/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/FSharpCode.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FSharpCode.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FSharpCode/1.0.0": {
+      "type": "project",
+      "path": "FSharpCode/FSharpCode.fsproj",
+      "msbuildProject": "FSharpCode/FSharpCode.fsproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "FSharpCode >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/vankata/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/vankata/documents/godot/slicer/slicer.csproj",
+      "projectName": "slicer",
+      "projectPath": "/home/vankata/documents/godot/slicer/slicer.csproj",
+      "packagesPath": "/home/vankata/.nuget/packages/",
+      "outputPath": "/home/vankata/documents/godot/slicer/.mono/temp/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/vankata/.config/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {
+            "/home/vankata/documents/godot/slicer/FSharpCode/FSharpCode.fsproj": {
+              "projectPath": "/home/vankata/documents/godot/slicer/FSharpCode/FSharpCode.fsproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "runtimeIdentifierGraphPath": "/usr/lib/mono/msbuild/Current/bin/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

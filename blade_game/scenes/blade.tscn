@@ -1,0 +1,327 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://images/blades/blade1.png" type="Texture" id=1]
+[ext_resource path="res://sounds/arrow_whistle.wav" type="AudioStream" id=2]
+[ext_resource path="res://sounds/118792__lmbubec__1-knife-slash-a.wav" type="AudioStream" id=3]
+[ext_resource path="res://images/vfx/trace_01.png" type="Texture" id=4]
+[ext_resource path="res://images/vfx/tube.png" type="Texture" id=5]
+[ext_resource path="res://images/battleground.png" type="Texture" id=6]
+[ext_resource path="res://images/vfx/bladevfx/white/7.png" type="Texture" id=7]
+[ext_resource path="res://images/vfx/bladevfx/white/3.png" type="Texture" id=8]
+[ext_resource path="res://images/vfx/bladevfx/white/6.png" type="Texture" id=9]
+[ext_resource path="res://images/vfx/bladevfx/white/2.png" type="Texture" id=10]
+[ext_resource path="res://images/vfx/bladevfx/white/4.png" type="Texture" id=11]
+[ext_resource path="res://images/vfx/bladevfx/white/shadow8.png" type="Texture" id=12]
+[ext_resource path="res://images/vfx/bladevfx/white/5.png" type="Texture" id=13]
+[ext_resource path="res://images/vfx/bladevfx/white/8.png" type="Texture" id=14]
+[ext_resource path="res://images/vfx/bladevfx/white/shadow7.png" type="Texture" id=15]
+[ext_resource path="res://images/vfx/bladevfx/white/1.png" type="Texture" id=16]
+[ext_resource path="res://images/vfx/bladevfx/white/shadow6.png" type="Texture" id=17]
+[ext_resource path="res://images/vfx/bladevfx/white/shadow5.png" type="Texture" id=18]
+[ext_resource path="res://sounds/249819__spookymodem__magic-smite.wav" type="AudioStream" id=19]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+render_mode unshaded, blend_add;
+
+uniform float width : hint_range(0.0, 16.0);
+uniform vec4 outline_color : hint_color;
+ 
+void fragment()
+{
+    vec2 size = vec2(width) / vec2(textureSize(TEXTURE, 0));
+   
+    vec4 sprite_color = texture(TEXTURE, UV);
+   
+    float alpha = sprite_color.a;
+    alpha += texture(TEXTURE, UV + vec2(0.0, -size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(0.0, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, 0.0)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+   
+    vec3 final_color = mix(outline_color.rgb, sprite_color.rgb, sprite_color.a);
+    COLOR = vec4(final_color, clamp(alpha, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/width = 1.0
+shader_param/outline_color = Color( 2, 0, 0, 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Sprite
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	material = material.duplicate()
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.037037, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0.670455 ), 0.0, 0.0, 0, 0, Vector2( 0.221519, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0159091 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 10, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 90.0
+scale = 0.2
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 6 )
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Particles2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	process_material = process_material.duplicate()
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="Animation" id=11]
+resource_name = "flames"
+
+[sub_resource type="Animation" id=12]
+resource_name = "spin"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, -1 ) ]
+}
+
+[sub_resource type="Shader" id=13]
+code = "shader_type canvas_item;
+render_mode unshaded, blend_add;
+
+uniform float radius = 10.0;
+
+void fragment(){
+	vec4 new_color = texture(TEXTURE, UV);
+	vec2 pixel_size = TEXTURE_PIXEL_SIZE;
+
+	new_color += texture(TEXTURE, UV + vec2(0, -radius) * pixel_size);
+	new_color += texture(TEXTURE, UV + vec2(0, radius) * pixel_size);
+	new_color += texture(TEXTURE, UV + vec2(-radius, 0) * pixel_size);
+	new_color += texture(TEXTURE, UV + vec2(radius, 0) * pixel_size);
+	
+	COLOR = new_color / 5.0;
+	COLOR.a = clamp (UV.x * 4. * COLOR.a, 0., 1.);
+}"
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+shader_param/radius = 5.0
+
+[sub_resource type="CanvasItemMaterial" id=15]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Shader" id=18]
+code = "shader_type canvas_item;
+
+uniform vec4 shadow_color = vec4(0., 0., 0., 0.5);
+uniform float shadow_angle = 1.7;
+uniform float shadow_offset = 0.312;
+uniform float widen = 0.586;
+uniform float distance_from_ground = 0.0;
+void fragment() {
+	vec4 original = texture(TEXTURE, UV);
+	vec2 shadow_uv = vec2( widen * (UV.x * (shadow_angle + UV.y) - shadow_offset), UV.y + distance_from_ground);
+	vec4 shadow = texture(TEXTURE, shadow_uv);
+	shadow.rgba = shadow_color * shadow.a;
+	COLOR = (original + shadow);
+}"
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 18 )
+shader_param/shadow_color = Plane( 0, 0, 0, 0.5 )
+shader_param/shadow_angle = 1.996
+shader_param/shadow_offset = 0.443
+shader_param/widen = 0.586
+shader_param/distance_from_ground = 0.082
+
+[sub_resource type="ViewportTexture" id=20]
+viewport_path = NodePath("viewport")
+
+[sub_resource type="Shader" id=21]
+code = "shader_type canvas_item;
+uniform sampler2D img;
+void fragment(){
+	vec4 tex = texture(img, UV);
+	float a = tex.a ;
+	COLOR.r = a;
+	COLOR = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - UV.x * (1.0 - (sqrt(a))) * 0.1, SCREEN_UV.y) );
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = SubResource( 21 )
+shader_param/img = ExtResource( 5 )
+
+[node name="blade" type="Node2D"]
+material = SubResource( 1 )
+
+[node name="battleground" type="Sprite" parent="."]
+visible = false
+position = Vector2( 121.612, 149.888 )
+z_index = -4
+texture = ExtResource( 6 )
+
+[node name="world_environment" type="WorldEnvironment" parent="."]
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="outline" type="Sprite" parent="sprite"]
+material = SubResource( 3 )
+texture = ExtResource( 1 )
+script = SubResource( 4 )
+
+[node name="particles" type="Particles2D" parent="sprite"]
+visible = false
+z_index = -1
+amount = 25
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 9 )
+texture = ExtResource( 4 )
+script = SubResource( 10 )
+
+[node name="animation_player" type="AnimationPlayer" parent="sprite"]
+playback_speed = 1.5
+anims/flames = SubResource( 11 )
+anims/spin = SubResource( 12 )
+
+[node name="trail" type="Sprite" parent="sprite"]
+modulate = Color( 2.50196, 0, 0, 0 )
+material = SubResource( 14 )
+z_index = -1
+texture = ExtResource( 1 )
+
+[node name="fire" type="AnimatedSprite" parent="sprite"]
+visible = false
+material = SubResource( 15 )
+position = Vector2( -182.551, 0 )
+z_index = -1
+frames = SubResource( 16 )
+animation = "New Anim"
+frame = 4
+speed_scale = 2.0
+playing = true
+flip_h = true
+
+[node name="smoke" type="AnimatedSprite" parent="sprite"]
+visible = false
+material = SubResource( 15 )
+position = Vector2( -182.551, 0 )
+z_index = -1
+frames = SubResource( 17 )
+frame = 4
+speed_scale = 2.0
+playing = true
+flip_h = true
+
+[node name="viewport" type="Viewport" parent="."]
+size = Vector2( 1920, 1080 )
+own_world = true
+transparent_bg = true
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="sprite3" type="Sprite" parent="."]
+visible = false
+material = SubResource( 19 )
+texture = SubResource( 20 )
+
+[node name="start2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[node name="line" type="Line2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.156863 )
+z_index = -1
+
+[node name="line2" type="Line2D" parent="."]
+material = SubResource( 22 )
+z_index = -1
+width = 75.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+texture = ExtResource( 5 )
+texture_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="whoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -16.155
+
+[node name="start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

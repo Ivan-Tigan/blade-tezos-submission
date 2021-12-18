@@ -1,0 +1,808 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Isopoh.Cryptography.SecureArray</name>
+    </assembly>
+    <members>
+        <member name="T:Isopoh.Cryptography.SecureArray.DefaultLinuxSecureArrayCall">
+            <summary>
+            A <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayCall"/> with defaults for the Linux operating system.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.DefaultLinuxSecureArrayCall.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.DefaultLinuxSecureArrayCall"/> class.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.DefaultOsxSecureArrayCall">
+            <summary>
+            A <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayCall"/> with defaults for the OSX operating system.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.DefaultOsxSecureArrayCall.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.DefaultOsxSecureArrayCall"/> class.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.DefaultWebSecureArrayCall">
+            <summary>
+            A <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayCall"/> with defaults for the Linux operating system.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.DefaultWebSecureArrayCall.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.DefaultWebSecureArrayCall"/> class.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.DefaultWindowsSecureArrayCall">
+            <summary>
+            A <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayCall"/> with defaults for the Windows operating system.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.DefaultWindowsSecureArrayCall.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.DefaultWindowsSecureArrayCall"/> class.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.DefaultWindowsSecureArrayCall.VirtualAlloc">
+            <summary>
+            Gets a delegate VirtualAlloc() that works on 32-bit or 64-bit operating systems.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.DefaultWindowsSecureArrayCall.SetProcessWorkingSetSizeEx">
+            <summary>
+            Gets a delegate SetProcessWorkingSetSizeEx() that works on 32-bit or 64-bit operating systems.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.DefaultWindowsSecureArrayCall.GetProcessWorkingSetSizeEx">
+            <summary>
+            Gets a delegate GetProcessWorkingSetSizeEx() that works on 32-bit or 64-bit operating systems.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods">
+            <summary>
+            Contains "unsafe" native methods for the Linux operating system.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxMlock(System.IntPtr,System.UIntPtr)">
+            <summary>
+            Lock part or all of the calling process's virtual address space
+            into RAM, preventing that memory from being paged to the swap area.
+            </summary>
+            <param name="addr">Start of memory to lock into RAM.</param>
+            <param name="len">Byte count of memory to lock into RAM.</param>
+            <returns>0 on success; -1 on error.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxMunlock(System.IntPtr,System.UIntPtr)">
+            <summary>
+            Unlocks pages in the address range starting at <paramref
+            name="addr"/> and continuing for <paramref name="len"/> bytes.
+            After this call, all pages that contain a part of the specified
+            memory range can be moved to external swap space again by the kernel.
+            </summary>
+            <param name="addr">Start of memory to unlock from RAM.</param>
+            <param name="len">Byte count of memory to unlock from RAM.</param>
+            <returns>0 on success; -1 on error.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxMemset(System.IntPtr,System.Int32,System.UIntPtr)">
+            <summary>
+            Fills the first <paramref name="n"/> bytes of <paramref
+            name="addr"/> with the value <paramref name="c"/>.
+            </summary>
+            <param name="addr">The buffer to fill.</param>
+            <param name="c">The byte value to fill with.</param>
+            <param name="n">The number of bytes to fill.</param>
+            <returns><paramref name="addr"/>.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxGetRLimit(System.Int32,Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxRlimit@)">
+            <summary>
+            Gets resource limits.
+            </summary>
+            <param name="resource">The resource to get.</param>
+            <param name="rlimit">Populated with the resource values.</param>
+            <returns>0 on success; -1 on error and errno is set appropriately.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxSetRLimit(System.Int32,Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxRlimit@)">
+            <summary>
+            Sets resource limits.
+            </summary>
+            <param name="resource">The resource to set.</param>
+            <param name="rlimit">Resource values to set.</param>
+            <returns>0 on success; -1 on error and errno is set appropriately.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxSterrorR(System.Int32,System.IntPtr,System.UInt64)">
+            <summary>
+            Fills <paramref name="buf"/> with error text based on <paramref name="errno"/>.
+            </summary>
+            <param name="errno">The error number to get text for.</param>
+            <param name="buf">The buffer to fill.</param>
+            <param name="buflen">The maximum length of the buffer to fill.</param>
+            <returns>0 on success; a positive error number on failure.</returns>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxRlimit">
+            <summary>
+            The structure for the setrlimit() and getrlimit() calls.
+            </summary>
+            <remarks>
+            On Linux, I found a comment in /usr/include/x64_32-linux-gnu/bits/typesizes.h
+            that said "X32 kernel interface is 64-bit" and the code seemed to bare that out
+            so this should work for both 32-bit and 64-bit kernels.
+            </remarks>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxRlimit.RlimCur">
+            <summary>
+            Soft limit.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxRlimit.RlimMax">
+            <summary>
+            Hard limit (ceiling for <see cref="F:Isopoh.Cryptography.SecureArray.LinuxNative.UnsafeNativeMethods.LinuxRlimit.RlimCur"/>.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.LockFailException">
+            <inheritdoc />
+            <summary>
+            Represents errors that occur trying to lock a buffer into memory.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LockFailException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.LockFailException"/> class.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LockFailException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.LockFailException"/> class.
+            </summary>
+            <param name="message">
+            Text for the <see cref="P:System.Exception.Message" /> property.
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.LockFailException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.LockFailException"/> class.
+            </summary>
+            <param name="message">
+            Text for the <see cref="P:System.Exception.Message" /> property.
+            </param>
+            <param name="innerException">
+            Exception that spawned this exception.
+            </param>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.OsxNative.UnsafeNativeMethods">
+            <summary>
+            Contains "unsafe" native methods for the OSX operating system.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.OsxNative.UnsafeNativeMethods.OsxMlock(System.IntPtr,System.UIntPtr)">
+            <summary>
+            Lock part or all of the calling process's virtual address space
+            into RAM, preventing that memory from being paged to the swap area.
+            </summary>
+            <param name="addr">Start of memory to lock into RAM.</param>
+            <param name="len">Byte count of memory to lock into RAM.</param>
+            <returns>0 on success; -1 on error.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.OsxNative.UnsafeNativeMethods.OsxMunlock(System.IntPtr,System.UIntPtr)">
+            <summary>
+            Unlocks pages in the address range starting at <paramref
+            name="addr"/> and continuing for <paramref name="len"/> bytes.
+            After this call, all pages that contain a part of the specified
+            memory range can be moved to external swap space again by the kernel.
+            </summary>
+            <param name="addr">Start of memory to unlock from RAM.</param>
+            <param name="len">Byte count of memory to unlock from RAM.</param>
+            <returns>0 on success; -1 on error.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.OsxNative.UnsafeNativeMethods.OsxMemset(System.IntPtr,System.Int32,System.UIntPtr)">
+            <summary>
+            Fills the first <paramref name="n"/> bytes of <paramref
+            name="addr"/> with the value <paramref name="c"/>.
+            </summary>
+            <param name="addr">The buffer to fill.</param>
+            <param name="c">The byte value to fill with.</param>
+            <param name="n">The number of bytes to fill.</param>
+            <returns><paramref name="addr"/>.</returns>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.SecureArray`1">
+            <summary>
+            Manage an array that holds sensitive information.
+            </summary>
+            <typeparam name="T">
+            The type of the array. Limited to built in types.
+            </typeparam>
+            <remarks>
+            <para>You can think of the <c>SecureArray</c> sort of like you would
+            think of
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.securestring">SecureString</a>
+            except that <c>SecureString</c> (usually) does crypto to protect its
+            sensitive data and has windows of vulnerability when it decrypts the
+            string for use. <c>SecureArray</c> protects its data by locking the
+            data into RAM to keep it from swapping to disk and also zeroing the
+            buffer when disposed. So, unlike <c>SecureString</c>, any process with
+            access to your process's memory will be able to read the data in your
+            <c>SecureArray</c>, but you do not have to worry about your data
+            persisting anywhere or multiple copies of your data floating around
+            RAM due to C#'s memory management.
+            </para><para>
+            Because it locks the memory into RAM (and at a
+            non-movable-by-the-garbage-collector location), you need to use it as
+            infrequently as possible and for as short a time as possible. RAM
+            secured this way puts stress on the computer as a whole by denying
+            physical RAM for other processes and puts stress on your particular
+            executable by denying freedom to the garbage collector to reduce
+            fragmentation as needed for best performance.
+            </para><para>
+            <b><em>Always</em></b> dispose of your <c>SecureArray</c>s.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray`1.#ctor(System.Int32,Isopoh.Cryptography.SecureArray.SecureArrayType,Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/> class.
+            </summary>
+            <param name="size">
+                The number of elements in the secure array.
+            </param>
+            <param name="type">
+                The type of secure array to initialize.
+            </param>
+            <param name="call">
+                The methods that get called to secure the array. A null value
+                defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray`1.#ctor(System.Int32,Isopoh.Cryptography.SecureArray.SecureArrayType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/> class.
+            </summary>
+            <param name="size">
+                The number of elements in the secure array.
+            </param>
+            <param name="type">
+                The type of secure array to initialize.
+            </param>
+            <remarks>
+            Uses <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </remarks>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray`1.#ctor(System.Int32,Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/> class.
+            </summary>
+            <param name="size">
+                The number of elements in the secure array.
+            </param>
+            <param name="call">
+                The methods that get called to secure the array. A null value
+                defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <remarks>
+            Uses <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayType"/>.<see cref="F:Isopoh.Cryptography.SecureArray.SecureArrayType.ZeroedPinnedAndNoSwap"/>.
+            </remarks>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/> class.
+            </summary>
+            <param name="size">
+                The number of elements in the secure array.
+            </param>
+            <remarks>
+            Uses <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayType"/>.<see cref="F:Isopoh.Cryptography.SecureArray.SecureArrayType.ZeroedPinnedAndNoSwap"/>
+            and <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </remarks>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArray`1.Buffer">
+            <summary>
+            Gets the secure array.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArray`1.Item(System.Int32)">
+            <summary>
+            Gets or sets elements in the secure array.
+            </summary>
+            <param name="i">
+            The index of the element.
+            </param>
+            <returns>
+            The element.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray`1.Best(System.Int32,Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Returns the "best" secure array it can. Tries first for <see cref="F:Isopoh.Cryptography.SecureArray.SecureArrayType.ZeroedPinnedAndNoSwap"/>
+            and, if that fails, returns a <see cref="F:Isopoh.Cryptography.SecureArray.SecureArrayType.ZeroedAndPinned"/> secure array.
+            </summary>
+            <param name="size">The number of elements in the returned <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/>.</param>
+            <param name="secureArrayCall">
+                The methods that get called to secure the array. A null value
+                defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <returns>
+            A new <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/>.
+            </returns>
+            <remarks>
+            Whether a no-swap <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/> can be returned is up to the operating system.
+            You can query <see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.ProtectionType"/> to find the type of <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/>
+            returned.
+            </remarks>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray`1.Dispose">
+            <summary>
+            Zero buffer and release resources.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.SecureArray">
+            <summary>
+            Base class of all <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/> classes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.SecureArray.TypeSizes">
+            <summary>
+            Cannot find a way to do a compile-time verification that the
+            array element type is one of these so this dictionary gets
+            used to do it at runtime.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray.#ctor(Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/> class.
+            </summary>
+            <param name="call">
+            The methods that get called to secure the array. A null value defaults
+            to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <remarks>
+            You cannot create a <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/> directly, you must
+            derive from this class like <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray`1"/> does.
+            </remarks>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArray.ReportMaxLockableOnLockFail">
+            <summary>
+            Gets or sets a value indicating whether the maximum lockable memory
+            will be reported in the exception message upon lock failure.
+            </summary>
+            <remarks>
+            Only turn this on if you need this information because this
+            calculation can take a lot of time (over 90% of the time for
+            something like typical Argon2 hashing).
+            </remarks>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall">
+            <summary>
+            Gets the default methods that get called to secure the array.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArray.ProtectionType">
+            <summary>
+            Gets the <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayType"/> of protection this <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/> has.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArray.Call">
+            <summary>
+            Gets or sets the methods that get called to secure the array.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray.BuiltInTypeElementSize``1(``0[])">
+            <summary>
+            Gets the size of the buffer element. Will throw a
+            <see cref="T:System.NotSupportedException"/> if the element type is not
+            a built in type.
+            </summary>
+            <typeparam name="T">
+            The array element type to return the size of.
+            </typeparam>
+            <param name="buffer">
+            The array.
+            </param>
+            <returns>
+            The lengths in bytes of the size of the element in <paramref name="buffer"/>.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray.Zero``1(``0[],Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Zero the given buffer in a way that will not be optimized away.
+            </summary>
+            <typeparam name="T">
+            The type of the elements in the buffer.
+            </typeparam>
+            <param name="buffer">
+            The buffer to zero.
+            </param>
+            <param name="call">
+            The methods to call to secure the array. Defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray.Cleanup``1(``0[])">
+            <summary>
+            Zero <paramref name="buf"/> and release resources.
+            </summary>
+            <typeparam name="T">
+            The type of the array elements in <paramref name="buf"/>.
+            </typeparam>
+            <param name="buf">
+            The buffer to zero and whose resources to release. Should be
+            the same as passed into <see cref="M:Isopoh.Cryptography.SecureArray.SecureArray.Init``1(``0[],Isopoh.Cryptography.SecureArray.SecureArrayType)"/>.
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray.Init``1(``0[],Isopoh.Cryptography.SecureArray.SecureArrayType)">
+            <summary>
+            Call this with the array to secure and the number of bytes in that
+            array. The buffer will be zeroed and the handle freed when the
+            instance is disposed.
+            </summary>
+            <typeparam name="T">
+            The type of the array elements in <paramref name="buffer"/>.
+            </typeparam>
+            <param name="buffer">
+            The array to secure.
+            </param>
+            <param name="type">
+            The type of secure array to initialize.
+            </param>
+            <exception cref="T:Isopoh.Cryptography.SecureArray.LockFailException">
+            Operating system did not allow the memory to be locked.
+            </exception>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArray.GetMaxLockable">
+            <summary>
+            Perform a binary search to find the current max lockable memory amount. Used
+            for error reporting.
+            </summary>
+            <returns>
+            The current number of bytes that can be locked. This is likely to change on
+            subsequent calls.
+            </returns>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.SecureArrayCall">
+            <summary>
+            Call used by <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/> to secure the array.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.SecureArrayCall.#ctor(System.Action{System.IntPtr,System.UIntPtr},System.Func{System.IntPtr,System.UIntPtr,System.String},System.Action{System.IntPtr,System.UIntPtr})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.SecureArray.SecureArrayCall"/> class.
+            </summary>
+            <param name="zeroMemory">
+            Call that zeroes memory in a way that does not get optimized away.
+            </param>
+            <param name="lockMemory">
+            Call that locks the given memory so it doesn't get swapped out to disk.
+            </param>
+            <param name="unlockMemory">
+            Call that unlocks memory previously locked by a call to <paramref name="lockMemory"/>.
+            </param>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArrayCall.ZeroMemory">
+            <summary>
+            Gets or sets a method that zeroes memory in a way that does not get optimized away.
+            </summary>
+            <remarks>
+            On Linux and OSX, simply calls memset() and hopes the P/Invoke
+            mechanism does not have special handling for memset calls (and
+            thus does not even think about optimizing the call away).
+            </remarks>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArrayCall.LockMemory">
+            <summary>
+            Gets or sets a method that locks the given memory so it doesn't get swapped out to disk.
+            </summary>
+            <returns>
+            Null on success; otherwise an error message.
+            </returns>
+        </member>
+        <member name="P:Isopoh.Cryptography.SecureArray.SecureArrayCall.UnlockMemory">
+            <summary>
+            Gets or sets a method that unlocks memory previously locked by a call to <see cref="P:Isopoh.Cryptography.SecureArray.SecureArrayCall.LockMemory"/>.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.SecureArrayType">
+            <summary>
+            The behavior of the secure array.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.SecureArrayType.Zeroed">
+            <summary>
+            Zero the memory on disposal
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.SecureArrayType.ZeroedAndPinned">
+            <summary>
+            Pin the memory so the garbage collector doesn't move it around
+            and zero the memory on disposal
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.SecureArrayType.ZeroedPinnedAndNoSwap">
+            <summary>
+            Lock the memory into RAM, pin the memory so the garbage collector
+            doesn't move it, and zero the memory on disposal.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods">
+            <summary>
+            Contains "unsafe" native methods for the OSX operating system.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.GetProcessMemoryInfo(System.IntPtr,Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters@,System.UInt32)">
+            <summary>
+            Retrieves information about the memory usage of the specified process.
+            </summary>
+            <param name="hProcess">A handle to the process. The handle must have
+            the PROCESS_QUERY_INFORMATION or PROCESS_QUERY_LIMITED_INFORMATION
+            access right.</param>
+            <param name="counters">A pointer to the PROCESS_MEMORY_COUNTERS or
+            PROCESS_MEMORY_COUNTERS_EX structure that receives information about
+            the memory usage of the process.</param>
+            <param name="size">The size of the <paramref name="counters"/>
+            structure in bytes.</param>
+            <returns>Non zero on success; otherwise zero.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.GetCurrentProcess">
+            <summary>
+            Retrieves a pseudo handle for the current process.
+            </summary>
+            <returns>A pseudo handle for the current process.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.GetProcessWorkingSetSizeEx64(System.IntPtr,System.UInt64@,System.UInt64@,System.UInt32@)">
+            <summary>
+            Retrieves the minimum and maximum working set sizes of the specified process.
+            </summary>
+            <param name="processHandle">Process to query.</param>
+            <param name="minWorkingSetSize">Receives the minimum working set size of <paramref name="processHandle"/>.</param>
+            <param name="maxWorkingSetSize">Receives the maximum working set size of <paramref name="processHandle"/>.</param>
+            <param name="flags">Receives the flags that control the enforcement of the working set sizes.</param>
+            <returns>None.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.GetProcessWorkingSetSizeEx32(System.IntPtr,System.UInt32@,System.UInt32@,System.UInt32@)">
+            <summary>
+            Retrieves the minimum and maximum working set sizes of the specified process.
+            </summary>
+            <param name="processHandle">Process to query.</param>
+            <param name="minWorkingSetSize">Receives the minimum working set size of <paramref name="processHandle"/>.</param>
+            <param name="maxWorkingSetSize">Receives the maximum working set size of <paramref name="processHandle"/>.</param>
+            <param name="flags">Receives the flags that control the enforcement of the working set sizes.</param>
+            <returns>None.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.SetProcessWorkingSetSizeEx64(System.IntPtr,System.UInt64,System.UInt64,System.UInt32)">
+            <summary>
+            Sets the minimum and maximum working set sizes of the specified process.
+            </summary>
+            <param name="processHandle">Process to query.</param>
+            <param name="minWorkingSetSize">Minimum working set size of <paramref name="processHandle"/>.</param>
+            <param name="maxWorkingSetSize">Maximum working set size of <paramref name="processHandle"/>.</param>
+            <param name="flags">Flags that control the enforcement of the working set sizes.</param>
+            <returns>Nonzero on success; otherwise zero.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.SetProcessWorkingSetSizeEx32(System.IntPtr,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Sets the minimum and maximum working set sizes of the specified process.
+            </summary>
+            <param name="processHandle">Process to query.</param>
+            <param name="minWorkingSetSize">Minimum working set size of <paramref name="processHandle"/>.</param>
+            <param name="maxWorkingSetSize">Maximum working set size of <paramref name="processHandle"/>.</param>
+            <param name="flags">Flags that control the enforcement of the working set sizes.</param>
+            <returns>Nonzero on success; otherwise zero.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.RtlZeroMemory(System.IntPtr,System.UIntPtr)">
+            <summary>
+            Fill a block of memory with zeros.
+            </summary>
+            <param name="ptr">A pointer to the memory block to be filled with zeros.</param>
+            <param name="cnt">The number of bytes to fill with zeros.</param>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.VirtualAlloc64(System.IntPtr,System.UInt64,System.UInt32,System.UInt32)">
+            <summary>
+            Reserves, commits, or changes the state of a region of pages in the
+            virtual address space of the calling process. Memory allocated by
+            this function is automatically initialized to zero.
+            </summary>
+            <param name="lpAddress">The starting address of the region to allocate.</param>
+            <param name="size">The size of the region in bytes.</param>
+            <param name="allocationTypeFlags">The type of memory allocation.</param>
+            <param name="protectFlags">The memory protection of the region.</param>
+            <returns>Address of the region on success; otherwise null.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.VirtualAlloc32(System.IntPtr,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Reserves, commits, or changes the state of a region of pages in the
+            virtual address space of the calling process. Memory allocated by
+            this function is automatically initialized to zero.
+            </summary>
+            <param name="lpAddress">The starting address of the region to allocate.</param>
+            <param name="size">The size of the region in bytes.</param>
+            <param name="allocationTypeFlags">The type of memory allocation.</param>
+            <param name="protectFlags">The memory protection of the region.</param>
+            <returns>Address of the region on success; otherwise null.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.VirtualLock(System.IntPtr,System.UIntPtr)">
+            <summary>
+            Locks the specified region of the process's virtual address space
+            into physical memory, ensuring that subsequent access to the region
+            will not incur a page fault.
+            </summary>
+            <param name="lpAddress">A pointer to the base address of the region of pages to be locked.</param>
+            <param name="dwSize">The size of the region to be locked, in bytes. The region of affected pages
+            includes all pages that contain one or more bytes.</param>
+            <returns>Non-zero on success; otherwise zero.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.VirtualUnlock(System.IntPtr,System.UIntPtr)">
+            <summary>
+            Unlocks a specified range of pages in the virtual address space of
+            a process, enabling the system to swap the pages out to the paging
+            file if necessary.
+            </summary>
+            <param name="lpAddress">A pointer to the base address of the region of pages to be locked.</param>
+            <param name="dwSize">The size of the region to be locked, in bytes. The region of affected pages
+            includes all pages that contain one or more bytes.</param>
+            <returns>Non-zero on success; otherwise zero.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.SetLastError(System.UInt32)">
+            <summary>
+            Sets the last error for the calling thread.
+            </summary>
+            <param name="dwErrorCode">The last error code for the thread.</param>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.GetModuleHandle(System.String)">
+            <summary>
+            Retrieves a module handle for the specified module. The
+            module must have been loaded by the calling process.
+            </summary>
+            <param name="moduleName">
+            The name of the loaded module (either a .dll or .exe file). If the
+            file name extension is omitted, the default library extension .dll
+            is appended. The file name string can include a trailing point
+            character (.) to indicate that the module name has no extension.
+            The string does not have to specify a path. When specifying a path,
+            be sure to use backslashes (\), not forward slashes (/). The name
+            is compared (case independently) to the names of modules currently
+            mapped into the address space of the calling process.
+            </param>
+            <returns>The handle to the specified module on success; otherwise null.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.GetProcAddress(System.IntPtr,System.String)">
+            <summary>
+            Retrieves the address of an exported function or variable from the specified dynamic-link library (DLL).
+            </summary>
+            <param name="hModule">The handle to the DLL module.</param>
+            <param name="procName">The function or variable name or the function's ordinal value.</param>
+            <returns>The address of the exported function or variable on success; otherwise null.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.IsWow64Process(System.IntPtr,System.Boolean@)">
+            <summary>
+            Determines whether the specified process is running under WOW64 or
+            an Intel64 of x64 processor.
+            </summary>
+            <param name="hProcess">A handle to the process.</param>
+            <param name="wow64Process">
+            A pointer to a value that is set to TRUE if the process is running
+            under WOW64 on an Intel64 or x64 processor. If the process is
+            running under 32-bit Windows, the value is set to FALSE. If the
+            process is a 32-bit application running under 64-bit Windows 10 on
+            ARM, the value is set to FALSE. If the process is a 64-bit
+            application running under 64-bit Windows, the value is also set to
+            FALSE.
+            </param>
+            <returns>Nonzero on success; otherwise zero.</returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.VirtualQuery(System.IntPtr,Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation@,System.UInt32)">
+            <summary>
+            Retrieves information about a range of pages in the virtual address space of the calling process.
+            </summary>
+            <param name="lpAddress">The base address of the region to be queried.</param>
+            <param name="lpBuffer">
+            A pointer to a <see cref="T:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation"/> structure in
+            which information about the specified page range is returned.
+            </param>
+            <param name="dwLength">The size of the buffer pointed to by <paramref name="lpBuffer"/>.</param>
+            <returns>Actual number of bytes returned in <paramref name="lpBuffer"/> on success; otherwise zero.</returns>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters">
+            <summary>
+            Contains the memory statistics for a process.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.Cb">
+            <summary>
+            The size of the structure in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.PageFaultCount">
+            <summary>
+            The number of page faults.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.PeakWorkingSetSize">
+            <summary>
+            The peak working set size, in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.WorkingSetSize">
+            <summary>
+            The current working set size, in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.QuotaPeakPagedPoolUsage">
+            <summary>
+            The peak paged pool usage, in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.QuotaPagedPoolUsage">
+            <summary>
+            The current paged pool usage, in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.QuotaPeakNonPagedPoolUsage">
+            <summary>
+            The peak non-paged pool usage, in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.QuotaNonPagedPoolUsage">
+            <summary>
+            The current non-paged pool usage, in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.PagefileUsage">
+            <summary>
+            The commit charge value in bytes for this process. Commit charge is
+            the total amount of memory that the memory manager has committed for
+            a running process.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.ProcessMemoryCounters.PeakPagefileUsage">
+            <summary>
+            The peak value in bytes of the commit charge during the lifetime of this process.
+            </summary>
+        </member>
+        <member name="T:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation">
+            <summary>
+            Contains information about a range of pages in the virtual address
+            space of a process. The VirtualQuery and VirtualQueryEx functions
+            use this structure.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.BaseAddress">
+            <summary>
+            A pointer to the base address of the region of pages.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.AllocationBase">
+            <summary>
+            A pointer to the base address of a range of pages allocated by
+            the VirtualAlloc function. The page pointed to by the <see
+            cref="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.BaseAddress"/> member is contained within this
+            allocation range.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.AllocationProtect">
+            <summary>
+            The memory protection option when the region was initially
+            allocated. This member can be one of the memory protection
+            constants or 0 if the caller does not have access.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.RegionSize">
+            <summary>
+            The size of the region beginning at the base address in which
+            all pages have identical attributes, in bytes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.State">
+            <summary>
+            The state of the pages in the region.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.Protect">
+            <summary>
+            The access protection of the pages in the region. This member
+            is one of the values listed for the <see cref="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.AllocationProtect"/>
+            member.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.SecureArray.WindowsNative.UnsafeNativeMethods.MemoryBasicInformation.Type">
+            <summary>
+            The type of pages in the region.
+            </summary>
+        </member>
+    </members>
+</doc>

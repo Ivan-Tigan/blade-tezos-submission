@@ -1,0 +1,313 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://resources/fonts/IMMORTAL.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://images/player/bluecharacterbig.png" type="Texture" id=2]
+[ext_resource path="res://images/Tezos_logo.svg" type="Texture" id=3]
+[ext_resource path="res://images/blades/blade0.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.584314 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 5 )
+Button/styles/focus = SubResource( 5 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 5 )
+PanelContainer/styles/panel = SubResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="DynamicFont" id=23]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=25]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=24]
+script/source = "extends Control
+
+
+
+func _on_category_item_selected(index):
+	$blade.visible = index == 1
+	$character.visible = index == 0 
+	pass # Replace with function body.
+
+
+func _on_file_dialog_file_selected(path):
+	$blade.texture = load(path)
+	$character.texture = load(path)
+	set_meta(\"file_path\", path)
+	pass # Replace with function body.
+"
+
+[node name="shop_item" type="Panel"]
+margin_right = 200.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 200, 304 )
+theme = SubResource( 8 )
+custom_styles/panel = SubResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 192.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 23 )
+text = "Item Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blade" type="Sprite" parent="."]
+visible = false
+position = Vector2( 96, 136.153 )
+rotation = 0.73674
+scale = Vector2( 0.75912, 0.75912 )
+texture = ExtResource( 4 )
+
+[node name="character" type="Sprite" parent="."]
+visible = false
+position = Vector2( 105.875, 133.504 )
+scale = Vector2( 0.468284, 0.43941 )
+texture = ExtResource( 2 )
+hframes = 10
+frame = 3
+
+[node name="color" type="ColorRect" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 64.1528
+margin_right = 184.0
+margin_bottom = 216.153
+color = Color( 0.976471, 0.2, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="equip" type="Button" parent="."]
+visible = false
+margin_left = 8.0
+margin_top = 271.0
+margin_right = 192.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 23 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 19 )
+text = "Equip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buy" type="HBoxContainer" parent="."]
+visible = false
+margin_left = 8.0
+margin_top = 240.0
+margin_right = 192.0
+margin_bottom = 296.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="Button" parent="buy"]
+margin_right = 184.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 19 )
+text = "300"
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button2" type="Button" parent="buy"]
+visible = false
+margin_left = 97.0
+margin_right = 184.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 19 )
+text = "30"
+icon = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="set_price" type="HBoxContainer" parent="."]
+visible = false
+margin_left = 8.0
+margin_top = 232.0
+margin_right = 192.0
+margin_bottom = 265.0
+size_flags_vertical = 0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="Button" parent="set_price"]
+margin_right = 86.0
+margin_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 23 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 19 )
+text = " Set Price"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="LineEdit" parent="set_price"]
+margin_left = 96.0
+margin_right = 151.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 50, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/minimum_spaces = -1
+custom_fonts/font = SubResource( 25 )
+text = "5"
+align = 1
+
+[node name="texture_rect" type="TextureRect" parent="set_price"]
+margin_left = 161.0
+margin_right = 184.0
+margin_bottom = 33.0
+texture = ExtResource( 3 )
+
+[node name="propose" type="Control" parent="."]
+visible = false
+script = SubResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blade" type="Sprite" parent="propose"]
+visible = false
+position = Vector2( 96, 136.153 )
+rotation = 0.785398
+scale = Vector2( 0.75912, 0.75912 )
+texture = ExtResource( 4 )
+
+[node name="character" type="Sprite" parent="propose"]
+visible = false
+position = Vector2( 105.875, 133.504 )
+scale = Vector2( 0.468284, 0.43941 )
+texture = ExtResource( 2 )
+hframes = 10
+frame = 3
+
+[node name="btn_pick_image" type="Button" parent="propose"]
+margin_left = 8.0
+margin_top = 56.0
+margin_right = 192.0
+margin_bottom = 216.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="LineEdit" parent="propose"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 192.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 23 )
+text = "Item Name"
+align = 1
+
+[node name="submit" type="Button" parent="propose"]
+margin_left = 8.0
+margin_top = 264.0
+margin_right = 192.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 23 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 19 )
+text = "Submit Proposal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="category" type="OptionButton" parent="propose"]
+visible = false
+margin_left = 8.0
+margin_top = 224.0
+margin_right = 192.0
+margin_bottom = 255.0
+text = "Character"
+items = [ "Character", null, false, 0, null, "Blade", null, false, 1, null ]
+selected = 0
+
+[node name="canvas_layer" type="CanvasLayer" parent="propose"]
+
+[node name="file_dialog" type="FileDialog" parent="propose/canvas_layer"]
+margin_left = 168.0
+margin_top = 80.0
+margin_right = 856.0
+margin_bottom = 544.0
+window_title = "Open a File"
+dialog_text = "Select Image"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.png" )
+current_dir = "/home/vankata/documents/godot/slicer"
+current_path = "/home/vankata/documents/godot/slicer/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="propose/btn_pick_image" to="propose/canvas_layer/file_dialog" method="popup"]
+[connection signal="file_selected" from="propose/canvas_layer/file_dialog" to="propose" method="_on_file_dialog_file_selected"]

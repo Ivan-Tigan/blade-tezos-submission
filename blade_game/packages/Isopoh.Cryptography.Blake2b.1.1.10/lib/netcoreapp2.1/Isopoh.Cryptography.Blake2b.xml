@@ -1,0 +1,456 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Isopoh.Cryptography.Blake2b</name>
+    </assembly>
+    <members>
+        <member name="T:Isopoh.Cryptography.Blake2b.Blake2B">
+            <summary>
+            Convenience calls for performing Blake2 hashes.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.Blake2b.Blake2B.OutputLength">
+            <summary>
+            The output length of the Blake2 hash in bytes.
+            </summary>
+            <remarks>
+            <para>
+            This is the maximum length buffer a Blake2 hash can produce Blake2
+            will always hash to this length even when configured to hash to a
+            shorter value - the final step is to truncate the result.
+            </para>
+            <para>
+            Note, the length of the expected result is hashed into the result
+            so the <see cref="F:Isopoh.Cryptography.Blake2b.Blake2B.OutputLength"/>-byte buffer will hold different
+            values depending on the configured output length. Do not run Blake2
+            using the default length and then truncate and expect to get the
+            same result as if you configured Blake2 to produce a shorter
+            result.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2B.Create(Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Create a default Blake2 hash.
+            </summary>
+            <param name="secureArrayCall">
+            The methods that get called to secure arrays. A null value defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <returns>
+            A <see cref="T:Isopoh.Cryptography.Blake2b.Hasher"/> that can be converted to a <see cref="T:System.Security.Cryptography.HashAlgorithm"/>.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2B.Create(Isopoh.Cryptography.Blake2b.Blake2BConfig,Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Create a Blake2 hash with the given configuration.
+            </summary>
+            <param name="config">
+            The configuration to use.
+            </param>
+            <param name="secureArrayCall">
+            The methods that get called to secure arrays. A null value defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <returns>
+            A <see cref="T:Isopoh.Cryptography.Blake2b.Hasher"/> that can be converted to a <see cref="T:System.Security.Cryptography.HashAlgorithm"/>.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2B.ComputeHash(System.Byte[],System.Int32,System.Int32,Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Perform a default Blake2 hash on the given buffer.
+            </summary>
+            <param name="data">
+            The buffer to hash.
+            </param>
+            <param name="start">
+            The byte in the buffer to start hashing.
+            </param>
+            <param name="count">
+            The number of bytes to hash.
+            </param>
+            <param name="secureArrayCall">
+            The methods that get called to secure arrays. A null value defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <returns>
+            The hash of the buffer.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2B.ComputeHash(System.Byte[],Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Perform a default Blake2 hash on the given buffer.
+            </summary>
+            <param name="data">
+            The buffer to hash.
+            </param>
+            <param name="secureArrayCall">
+            The methods that get called to secure arrays. A null value defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <returns>
+            The hash of the buffer.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2B.ComputeHash(System.Byte[],Isopoh.Cryptography.Blake2b.Blake2BConfig,Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Perform a Blake2 hash on the given buffer using the given Blake2
+            configuration.
+            </summary>
+            <param name="data">
+            The buffer to hash.
+            </param>
+            <param name="config">
+            The configuration to use.
+            </param>
+            <param name="secureArrayCall">
+            The methods that get called to secure arrays. A null value defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <returns>
+            The hash of the buffer.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2B.ComputeHash(System.Byte[],System.Int32,System.Int32,Isopoh.Cryptography.Blake2b.Blake2BConfig,Isopoh.Cryptography.SecureArray.SecureArrayCall)">
+            <summary>
+            Perform a Blake2 hash on the given buffer using the given Blake2
+            configuration.
+            </summary>
+            <param name="data">
+            The buffer to hash.
+            </param>
+            <param name="start">
+            The byte in the buffer to start hashing.
+            </param>
+            <param name="count">
+            The number of bytes to hash.
+            </param>
+            <param name="config">
+            The configuration to use.
+            </param>
+            <param name="secureArrayCall">
+            The methods that get called to secure arrays. A null value defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <returns>
+            The hash of the buffer.
+            </returns>
+        </member>
+        <member name="T:Isopoh.Cryptography.Blake2b.Blake2BConfig">
+            <summary>
+            Configuration for the Blake2 hash.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BConfig.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.LockMemoryPolicy">
+            <summary>
+            Gets or sets the policy for created memory buffers.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Personalization">
+            <summary>
+            Gets or sets the personalization value used in the hash. If not null, must be 16 bytes.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Attempt to set <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Personalization"/> to non-null other than 16 bytes.
+            </exception>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Salt">
+            <summary>
+            Gets or sets the salt value used in the hash. If not null, must be 16 bytes.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Attempt to set <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Salt"/> to non-null other than 16 bytes.
+            </exception>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Key">
+            <summary>
+            Gets or sets the key value used in the hash. If not null, must be 128 bytes or shorter.
+            </summary>
+            <remarks>
+            Blake2 keyed hashing can be used for authentication as a faster and
+            simpler replacement for HMAC.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            Attempt to set <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Key"/> greater than 128 bytes.
+            </exception>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBytes">
+            <summary>
+            Gets or sets the output size in bytes. Must be less than or equal to 64.
+            </summary>
+            <remarks>
+            Blake2 incorporates this value into the hash. The array returned by the
+            <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BHasher"/>.<see cref="M:Isopoh.Cryptography.Blake2b.Blake2BHasher.Finish"/> call will
+            be this length unless the <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/> value is non-null.
+            If that property is non-null, that buffer gets returned by the <see
+            cref="T:Isopoh.Cryptography.Blake2b.Blake2BHasher"/>.<see cref="M:Isopoh.Cryptography.Blake2b.Blake2BHasher.Finish"/> call regardless of
+            the <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBytes"/> property. In that case, you can copy the
+            first <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBytes"/> bytes of the <see
+            cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/> array to get the value that Blake2 would have
+            returned.
+            </remarks>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBits">
+            <summary>
+            Gets or sets the output size in bits. Must be a multiple of 8.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Attempt to set <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBits"/> to a value not a multiple of 8 bits.
+            </exception>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer">
+            <summary>
+            Gets or sets the 64-byte result buffer the Blake2 algorithm will use.
+            </summary>
+            <remarks>
+            If not null, this is the buffer that will get returned by the
+            <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BHasher"/>.<see cref="M:Isopoh.Cryptography.Blake2b.Blake2BHasher.Finish"/> call
+            regardless of the value of <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBytes"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            Attempt to set <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/> to non-null other than 64 bytes.
+            </exception>
+        </member>
+        <member name="T:Isopoh.Cryptography.Blake2b.Blake2BCore">
+            <summary>
+            The core of the Blake2 hash
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.#ctor(Isopoh.Cryptography.SecureArray.SecureArrayCall,Isopoh.Cryptography.Blake2b.LockMemoryPolicy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BCore"/> class.
+            </summary>
+            <param name="secureArrayCall">
+            The methods that get called to secure arrays. A null value defaults to <see cref="T:Isopoh.Cryptography.SecureArray.SecureArray"/>.<see cref="P:Isopoh.Cryptography.SecureArray.SecureArray.DefaultCall"/>.
+            </param>
+            <param name="lockMemory">
+            Used to set locking strategy for buffers used in creating the hash. The memory
+            will always be zeroed prior to destruction. The memory is also always pinned
+            so the CLR can't move it and leave extraneous copies floating around in RAM.
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.Dispose">
+            <summary>
+            Release unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.Initialize(System.UInt64[])">
+            <summary>
+            Initialize the hash
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.HashCore(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Update the hash state
+            </summary>
+            <param name="array">
+            Data to use to update the hash state.
+            </param>
+            <param name="start">
+            Index of the first byte in <paramref name="array"/> to use.
+            </param>
+            <param name="count">
+            Number of bytes in <paramref name="array"/> to use.
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.HashFinal(System.Byte[])">
+            <summary>
+            Compute the hash
+            </summary>
+            <param name="hash">
+            Loaded with the hash
+            </param>
+            <returns>
+            <paramref name="hash"/>.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.HashFinal(System.Byte[],System.Boolean)">
+            <summary>
+            Compute the hash
+            </summary>
+            <param name="hash">
+            Loaded with the hash
+            </param>
+            <param name="isEndOfLayer">
+            True to signal the last node of a layer in tree-hashing mode; false otherwise.
+            </param>
+            <returns>
+            <paramref name="hash"/>.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.HashFinal">
+            <summary>
+            Return the hash
+            </summary>
+            <returns>
+            The 64-byte hash.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BCore.HashFinal(System.Boolean)">
+            <summary>
+            Return the hash
+            </summary>
+            <param name="isEndOfLayer">
+            True to signal the last node of a layer in tree-hashing mode; false otherwise.
+            </param>
+            <returns>
+            The 64-byte hash.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BHasher.Finish">
+            <summary>
+            Either returns <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BConfig"/>.<see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/>
+            or a new buffer of <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BConfig"/>.<see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBytes"/>
+            if no <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/> was given.
+            </summary>
+            <returns>
+            Either the final Blake2 hash or the <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/>. If
+            <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/> is non-null and <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BConfig"/>.<see
+            cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBytes"/> is less than 64, then the actual Blake2 hash
+            is the first <see cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.OutputSizeInBytes"/> of the <see
+            cref="P:Isopoh.Cryptography.Blake2b.Blake2BConfig.Result64ByteBuffer"/> buffer.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BHasher.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources if <paramref name="disposing"/> is true.
+            </summary>
+            <param name="disposing">
+            Set to true if disposing.
+            </param>
+        </member>
+        <member name="T:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig">
+            <summary>
+            Parameters for the tree hash
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig.IntermediateHashSize">
+            <summary>
+            Gets or sets the intermediate hash size
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig.MaxHeight">
+            <summary>
+            Gets or sets the tree maximum height.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig.LeafSize">
+            <summary>
+            Get or sets the tree leaf size.
+            </summary>
+        </member>
+        <member name="P:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig.FanOut">
+            <summary>
+            Gets or sets the tree fan out value.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig"/> class.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig.CreateInterleaved(System.Int32)">
+            <summary>
+            Create an instance of the <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig"/> for parallel hash computation.
+            </summary>
+            <param name="parallelism">
+            The amount of parallelism to invoke when generating the hash.
+            </param>
+            <returns>
+            An instance of the <see cref="T:Isopoh.Cryptography.Blake2b.Blake2BTreeConfig"/> suitable for generating a hash.
+            </returns>
+        </member>
+        <member name="T:Isopoh.Cryptography.Blake2b.Hasher">
+            <summary>
+            The bash hasher class.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Hasher.Init">
+            <summary>
+            Initialize for hash generation.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Hasher.Finish">
+            <summary>
+            Generate the hash from the hash's state.
+            </summary>
+            <returns>
+            The generated hash.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Hasher.Update(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Update the hash's state with the given data.
+            </summary>
+            <param name="data">
+            The data to add to the hash's state
+            </param>
+            <param name="start">
+            The index of the first byte of <paramref name="data"/> to add to the hash's state.
+            </param>
+            <param name="count">
+            The number of bytes of <paramref name="data"/> to add to the hash's state.
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Hasher.Update(System.Byte[])">
+            <summary>
+            Update the hash's state with the given data.
+            </summary>
+            <param name="data">
+            The data to add to the hash's state
+            </param>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Hasher.AsHashAlgorithm">
+            <summary>
+            Create a <see cref="T:System.Security.Cryptography.HashAlgorithm"/> from this.
+            </summary>
+            <returns>
+            The <see cref="T:System.Security.Cryptography.HashAlgorithm"/> based on this <see cref="T:Isopoh.Cryptography.Blake2b.Hasher"/>.
+            </returns>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Hasher.Dispose">
+            <summary>
+            Zero and release sensitive resources.
+            </summary>
+        </member>
+        <member name="M:Isopoh.Cryptography.Blake2b.Hasher.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources if <paramref name="disposing"/> is true.
+            </summary>
+            <param name="disposing">
+            Set to true if disposing.
+            </param>
+        </member>
+        <member name="T:Isopoh.Cryptography.Blake2b.LockMemoryPolicy">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.Blake2b.LockMemoryPolicy.None">
+            <summary>
+            Do not attempt to lock Blake2B buffers into RAM
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.Blake2b.LockMemoryPolicy.BestEffort">
+            <summary>
+            Attempt to lock Blake2B buffers into RAM, but allow non locked memory
+            if the operating system doesn't allow the memory to be locked.
+            </summary>
+        </member>
+        <member name="F:Isopoh.Cryptography.Blake2b.LockMemoryPolicy.Enforce">
+            <summary>
+            Throw <see cref="T:Isopoh.Cryptography.SecureArray.LockFailException"/> exception on failure to lock Blake2B buffers into RAM.
+            </summary>
+            <remarks>
+            <para>
+            Different operating systems handle locking memory in different ways and have different
+            default limits for the user. On Windows and MacOS, the defaults are that the user
+            can lock as much memory as is available into RAM. On Linux, this is rarely the case.
+            </para>
+            <para>
+            Typically, in Linux, to increase the limit, you must edit the /etc/security/limits.conf file.
+            </para>
+            </remarks>
+        </member>
+    </members>
+</doc>

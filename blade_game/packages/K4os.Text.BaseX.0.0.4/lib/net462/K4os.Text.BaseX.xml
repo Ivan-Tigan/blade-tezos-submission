@@ -1,0 +1,494 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>K4os.Text.BaseX</name>
+    </assembly>
+    <members>
+        <member name="T:K4os.Text.BaseX.Base16">
+            <summary>Static class with helper and factory methods for Base16 codec.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.Base16.Lower">
+            <summary>Codec using lower case characters by default.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.Base16.Upper">
+            <summary>Codec using upper case characters by default.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.Base16.Default">
+            <summary>Default codec (same as <see cref="P:K4os.Text.BaseX.Base16.Upper"/>.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16.ToHex(System.Byte[])">
+            <summary>Converts byte array to Base16 string.</summary>
+            <param name="decoded">Decoded buffer.</param>
+            <returns>Base16 encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16.ToHex(System.ReadOnlySpan{System.Byte})">
+            <summary>Converts byte span to Base16 string.</summary>
+            <param name="decoded">Decoded buffer.</param>
+            <returns>Base16 encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16.FromHex(System.String)">
+            <summary>Converts Base16 encoded string to byte array.</summary>
+            <param name="encoded">Encoded string.</param>
+            <returns>Decoded byte array.</returns>
+        </member>
+        <member name="T:K4os.Text.BaseX.Base16Codec">
+            <summary>Base16 codec.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16Codec.#ctor">
+            <summary>
+            Creates Base16 codec with default digits.
+            <see cref="T:K4os.Text.BaseX.Base16"/> class for some default codecs.
+            Please note, this operation is relatively slow (to use in hot spots) so
+            prefer using codecs as static/singletons.
+            </summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16Codec.#ctor(System.String)">
+            <summary>
+            Creates Base16 codec using specific set of digits.
+            <see cref="T:K4os.Text.BaseX.Base16"/> class for some default codecs.
+            Please note, this operation is relatively slow (to use in hot spots) so
+            prefer using codecs as static/singletons.
+            </summary>
+            <param name="digits"></param>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16Codec.DecodeImpl(System.Char*,System.Int32,System.Byte*,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16Codec.EncodeImpl(System.Byte*,System.Int32,System.Char*,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16Codec.MaximumDecodedLength(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base16Codec.MaximumEncodedLength(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:K4os.Text.BaseX.Base64">
+            <summary>Static class with helper and factory methods for Base64 codec.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.Base64.Default">
+            <summary>Default Base64 codec.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.Base64.Url">
+            <summary>URL friendly Base64 codec.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64.ToBase64(System.Byte[])">
+            <summary>Converts byte array to Base64 string.</summary>
+            <param name="decoded">Decoded buffer.</param>
+            <returns>Base64 encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64.ToBase64(System.ReadOnlySpan{System.Byte})">
+            <summary>Converts byte span to Base64 string.</summary>
+            <param name="decoded">Decoded buffer.</param>
+            <returns>Base64 encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64.FromBase64(System.String)">
+            <summary>Converts Base64 encoded string to byte array.</summary>
+            <param name="encoded">Encoded string.</param>
+            <returns>Decoded byte array.</returns>
+        </member>
+        <member name="T:K4os.Text.BaseX.Base64Codec">
+            <summary>Base64 codec.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.#ctor">
+            <summary>
+            Creates default Base64 codec.
+            <see cref="T:K4os.Text.BaseX.Base64"/> class for some default codecs.
+            Please note, this operation is relatively slow (to use in hot spots) so
+            prefer using codecs as static/singletons.
+            </summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.#ctor(System.Boolean)">
+            <summary>
+            Creates default Base64 codec with or without padding.
+            <see cref="T:K4os.Text.BaseX.Base64"/> class for some default codecs.
+            Please note, this operation is relatively slow (to use in hot spots) so
+            prefer using codecs as static/singletons.
+            </summary>
+            <param name="usePadding">Indicates if padding should be used.</param>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.#ctor(System.String,System.Boolean,System.Char)">
+            <summary>
+            Creates Base64 codec.
+            <see cref="T:K4os.Text.BaseX.Base64"/> class for some default codecs.
+            Please note, this operation is relatively slow (to use in hot spots) so
+            prefer using codecs as static/singletons.
+            </summary>
+            <param name="digits">Digits.</param>
+            <param name="usePadding">Indicates if padding should be used.</param>
+            <param name="paddingChar">Padding char (irrelevant, if <paramref name="usePadding"/> is <c>false</c></param>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.MaximumEncodedLength(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.MaximumDecodedLength(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.StripPadding(System.ReadOnlySpan{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.EncodeImpl(System.Byte*,System.Int32,System.Char*,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base64Codec.DecodeImpl(System.Char*,System.Int32,System.Byte*,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:K4os.Text.BaseX.Base85">
+            <summary>Static class with helper and factory methods for Base85 codec.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.Base85.Default">
+            <summary>Default Base85 codec.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85.ToBase85(System.Byte[])">
+            <summary>Converts byte array to Base85 string.</summary>
+            <param name="decoded">Decoded buffer.</param>
+            <returns>Base64 encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85.ToBase85(System.ReadOnlySpan{System.Byte})">
+            <summary>Converts byte span to Base85 string.</summary>
+            <param name="decoded">Decoded buffer.</param>
+            <returns>Base64 encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85.FromBase85(System.String)">
+            <summary>Converts Base85 encoded string to byte array.</summary>
+            <param name="encoded">Encoded string.</param>
+            <returns>Decoded byte array.</returns>
+        </member>
+        <member name="T:K4os.Text.BaseX.Base85Codec">
+            <summary>
+            Base85 codec. This is not full Ascii85 implementation is it does not
+            handle whitespace not linebreaks. It is faster (because of that) though.
+            </summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.#ctor">
+            <summary>
+            Create new Base85 codec with default settings.
+            Note: it would be better is you just use <see cref="P:K4os.Text.BaseX.Base85.Default"/>
+            </summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.#ctor(System.String,System.Char)">
+            <summary>Create new Base85 codec using specific set of digits.</summary>
+            <param name="digits">Digits.</param>
+            <param name="digitZ">Special digit for 0s (used for RLE compression)</param>
+            <exception cref="T:System.ArgumentException">Throw when given digits are not valid.</exception>
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.ErrorIndex(System.ReadOnlySpan{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.MaximumDecodedLength(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.DecodedLength(System.ReadOnlySpan{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.MaximumEncodedLength(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.DecodeImpl(System.Char*,System.Int32,System.Byte*,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:K4os.Text.BaseX.Base85Codec.EncodeImpl(System.Byte*,System.Int32,System.Char*,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:K4os.Text.BaseX.BaseXCodec">
+            <summary>Base class for all codecs.</summary>
+        </member>
+        <member name="F:K4os.Text.BaseX.BaseXCodec.MAX_DIGIT">
+            <summary>Maximum digits. Effectively all ASCII8 characters.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.BaseXCodec.CharToByte">
+            <summary>Symbol to value map.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.BaseXCodec.ByteToChar">
+            <summary>Value to symbol map.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.BaseXCodec.ValidChars">
+            <summary>Map of valid digits.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.#ctor(System.Int32,System.String,System.Boolean)">
+            <summary>Create abstract BaseX codec. Populates character maps.</summary>
+            <param name="base">Codec's base.</param>
+            <param name="digits">Digits.</param>
+            <param name="caseSensitive">Indicates if codec's digits are case sensitive.</param>
+            <exception cref="T:System.ArgumentException">Possible errors: not enough digits, too much digits, duplicate digits.</exception>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.IsValid(System.Char)">
+            <summary>Checks if given character is a valid digit.</summary>
+            <param name="digit">Potential digit.</param>
+            <returns><c>true</c> if digit is valid, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.ErrorIndex(System.ReadOnlySpan{System.Char})">
+            <summary>Scans encoded string for errors.</summary>
+            <param name="source">Encoded buffer.</param>
+            <returns>Returns index of first invalid character or -1 if no errors found.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Validate(System.ReadOnlySpan{System.Char})">
+            <summary>Validates encoded string for errors. Throws <see cref="T:System.ArgumentException"/>
+            if encoded string is invalid.</summary>
+            <param name="source">Encoded buffer.</param>
+            <returns>Same encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.StripPadding(System.ReadOnlySpan{System.Char})">
+            <summary>Strips padding from encoded buffer.</summary>
+            <param name="source">Encoded buffer.</param>
+            <returns>Encoded buffer without padding.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.DecodedLength(System.ReadOnlySpan{System.Char})">
+            <summary>Calculates how much space is needed to decode.</summary>
+            <param name="source">Encoded buffer.</param>
+            <returns>Space actually needed by decoded data.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.MaximumDecodedLength(System.Int32)">
+            <summary>Calculates how much space is needed to decode.</summary>
+            <param name="sourceLength">Length of encoded buffer.</param>
+            <returns>Space actually needed by decoded data.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.DecodedLength(System.ReadOnlySpan{System.Char},System.Int32)">
+            <summary>
+            Calculates how much space is needed to decode.
+            It also compares it to <paramref name="targetLength"/> and throws
+            <see cref="T:System.ArgumentException"/> exception if there is not enough space.
+            </summary>
+            <param name="source">Encoded buffer.</param>
+            <param name="targetLength">Space available for decoded data.</param>
+            <returns>Space actually needed by decoded data.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.EncodedLength(System.ReadOnlySpan{System.Byte})">
+            <summary>Calculates how much space is needed to encode.</summary>
+            <param name="source">Decoded buffer.</param>
+            <returns>Space actually needed by encoded data.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.MaximumEncodedLength(System.Int32)">
+            <summary>
+            Calculates how much space is needed to encode.
+            </summary>
+            <param name="sourceLength">Length of decoded buffer.</param>
+            <returns>Space actually needed by encoded data.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.EncodedLength(System.ReadOnlySpan{System.Byte},System.Int32)">
+            <summary>
+            Calculates how much space is needed to encode.
+            It also compares it to <paramref name="targetLength"/> and throws
+            <see cref="T:System.ArgumentException"/> exception if there is not enough space.
+            </summary>
+            <param name="source">Decoded buffer.</param>
+            <param name="targetLength">Space available for encoded data.</param>
+            <returns>Space actually needed by encoded data.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.DecodeImpl(System.Char*,System.Int32,System.Byte*,System.Int32)">
+            <summary>Close to metal implementation for decoding procedure.</summary>
+            <param name="source">Encoded buffer address.</param>
+            <param name="sourceLength">Encoded buffer length.</param>
+            <param name="target">Decoded buffer address.</param>
+            <param name="targetLength">Decoded buffer length.</param>
+            <returns>Number of bytes decoded.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.DecodeImpl(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <summary>Wrapper of actual implementation allowing to use spans instead of pointers.</summary>
+            <param name="source">Source span.</param>
+            <param name="target">Target span.</param>
+            <returns>Number of bytes decoded.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.EncodeImpl(System.Byte*,System.Int32,System.Char*,System.Int32)">
+            <summary>Close to metal implementation for encoding procedure.</summary>
+            <param name="source">Decoded buffer address.</param>
+            <param name="sourceLength">Decoded buffer length.</param>
+            <param name="target">Encoded buffer address.</param>
+            <param name="targetLength">Encoded buffer length.</param>
+            <returns>Number of characters decoded.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.EncodeImpl(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <summary>Wrapper of actual implementation allowing to use spans instead of pointers.</summary>
+            <param name="source">Source span.</param>
+            <param name="target">Target span.</param>
+            <returns>Number of bytes decoded.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Decode(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <summary>Decodes given string into span of bytes.</summary>
+            <param name="source">Encoded string.</param>
+            <param name="target">Buffer for decoded data.</param>
+            <returns>Number of bytes actually written.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Encode(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <summary>Encodes given buffer into span of characters.</summary>
+            <param name="source">Decoded buffer.</param>
+            <param name="target">Buffer for decoded characters.</param>
+            <returns>Number of characters actually written.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Decode(System.ReadOnlySpan{System.Char})">
+            <summary>Decodes given string into new buffer of bytes.</summary>
+            <param name="source">Encoded string.</param>
+            <returns>New buffer.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Encode(System.ReadOnlySpan{System.Byte},System.Buffers.ArrayPool{System.Char})">
+            <summary>Encoded byte buffer into new string.</summary>
+            <param name="source">Decoded buffer.</param>
+            <param name="arrayPool">Potentially <see cref="T:System.Buffers.ArrayPool`1"/> to allocate array
+            for intermediate results.</param>
+            <returns>New encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Decode1(System.Byte*,System.Byte)">
+            <summary>Decodes single character.</summary>
+            <param name="map">Character map.</param>
+            <param name="c">Character.</param>
+            <returns>A digit values assigned to character.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Decode1(System.Byte*,System.Char)">
+            <summary>Decodes single character.</summary>
+            <param name="map">Character map.</param>
+            <param name="c">Character.</param>
+            <returns>A digit values assigned to character.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Encode1(System.Char*,System.UInt32)">
+            <summary>Encodes single digit.</summary>
+            <param name="map">Digit map.</param>
+            <param name="v">Digit value.</param>
+            <returns>A character assigned to digit value.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXCodec.Encode1(System.Char*,System.Int32)">
+            <summary>Encodes single digit.</summary>
+            <param name="map">Digit map.</param>
+            <param name="v">Digit value.</param>
+            <returns>A character assigned to digit value.</returns>
+        </member>
+        <member name="T:K4os.Text.BaseX.BaseXExtensions">
+            <summary>
+            Extensions for BaseX codecs.
+            </summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXExtensions.Encode(K4os.Text.BaseX.BaseXCodec,System.Byte[],System.Boolean)">
+            <summary>Encodes given buffer into new encoded string.</summary>
+            <param name="codec">Codec.</param>
+            <param name="source">Decoded buffer.</param>
+            <param name="usePool">Indicates if array pool should be used.</param>
+            <returns>New encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXExtensions.Encode(K4os.Text.BaseX.BaseXCodec,System.Byte[],System.Int32,System.Int32,System.Boolean)">
+            <summary>Encodes given buffer into new encoded string.</summary>
+            <param name="codec">Codec.</param>
+            <param name="source">Decoded buffer.</param>
+            <param name="offset">Offset in source buffer.</param>
+            <param name="length">Length of source buffer.</param>
+            <param name="usePool">Indicates if array pool should be used.</param>
+            <returns>New encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXExtensions.Encode(K4os.Text.BaseX.BaseXCodec,System.ReadOnlySpan{System.Byte},System.Boolean)">
+            <summary>Encodes given buffer into new encoded string.</summary>
+            <param name="codec">Codec.</param>
+            <param name="source">Decoded buffer.</param>
+            <param name="usePool">Indicates if array pool should be used.</param>
+            <returns>New encoded string.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.BaseXExtensions.Decode(K4os.Text.BaseX.BaseXCodec,System.String)">
+            <summary>Decodes encoded string into new byte buffer</summary>
+            <param name="codec">Codec.</param>
+            <param name="source">Encoded string.</param>
+            <returns>New decoded buffer.</returns>
+        </member>
+        <member name="T:K4os.Text.BaseX.ShortGuid">
+            <summary>
+            Represents a globally unique identifier (GUID) with a shorter string value.
+            </summary>
+        </member>
+        <member name="F:K4os.Text.BaseX.ShortGuid.Empty">
+            <summary>A read-only instance of the ShortGuid class whose value is guaranteed to be all zeroes.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.#ctor(System.String)">
+            <summary>Creates a ShortGuid from a string. It accepts both "normal" guid and
+            base64 short guid.</summary>
+            <param name="text">The encoded guid (as "normal" guid or base64 encoded one)</param>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.#ctor(System.Guid)">
+            <summary>Creates a ShortGuid from a Guid</summary>
+            <param name="guid">The Guid to encode</param>
+        </member>
+        <member name="P:K4os.Text.BaseX.ShortGuid.Guid">
+            <summary>Gets the underlying Guid.</summary>
+        </member>
+        <member name="P:K4os.Text.BaseX.ShortGuid.Text">
+            <summary>Gets text representation of Guid.</summary>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.ToString">
+            <summary>Returns the base64 encoded guid as a string</summary>
+            <returns>Text representation of short guid (in ShortGuid form)</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.Equals(System.Object)">
+            <summary>
+            Returns a value indicating whether this instance and a 
+            specified Object represent the same type and value.
+            </summary>
+            <param name="obj">The object to compare.</param>
+            <returns><c>true</c> if objects are representing same Guid.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.CompareTo(System.Object)">
+            <summary>Compares ShortGuid with other object. Handles ShortGuid, Guid or ShortGuid's
+            string representation.</summary>
+            <param name="obj">The object to compare.</param>
+            <returns>A signed number indicating the relative values of this instance and
+            <paramref name="obj" />.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.GetHashCode">
+            <summary>Returns the HashCode for underlying Guid.</summary>
+            <returns>Guid's HashCode.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.Equals(K4os.Text.BaseX.ShortGuid)">
+            <summary>Checks if two ShortGuids are equals.</summary>
+            <param name="other">Other Guid.</param>
+            <returns><c>true</c> if Guids are equals; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.CompareTo(K4os.Text.BaseX.ShortGuid)">
+            <summary>Compares two ShortGuids are equals.</summary>
+            <param name="other">Other Guid.</param>
+            <returns><c>true</c> if Guids are equals; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.NewGuid">
+            <summary>
+            Initialises a new instance of the ShortGuid class
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.Encode(System.Guid)">
+            <summary>Encodes the given Guid as a base64 string that is 22 characters long.
+            </summary>
+            <param name="guid">The Guid to encode</param>
+            <returns></returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.Decode(System.String)">
+            <summary>Decodes given base64 string to Guid.</summary>
+            <param name="value">The base64 encoded string of a Guid</param>
+            <returns>A new Guid</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.op_Equality(K4os.Text.BaseX.ShortGuid,K4os.Text.BaseX.ShortGuid)">
+            <summary>Determines if both ShortGuids have the same underlying Guid value.</summary>
+            <param name="x">Guid X</param>
+            <param name="y">Guid Y</param>
+            <returns><c>true</c> if Guids are equal, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.op_Inequality(K4os.Text.BaseX.ShortGuid,K4os.Text.BaseX.ShortGuid)">
+            <summary>Determines if both ShortGuids do not have the same underlying Guid value.</summary>
+            <param name="x">Guid X</param>
+            <param name="y">Guid Y</param>
+            <returns><c>true</c> if Guids are not equal, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.op_Implicit(K4os.Text.BaseX.ShortGuid)~System.String">
+            <summary>Implicitly converts the ShortGuid to it's string equivalent</summary>
+            <param name="guid">ShortGuid</param>
+            <returns>String.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.op_Implicit(K4os.Text.BaseX.ShortGuid)~System.Guid">
+            <summary>Implicitly converts the ShortGuid to it's Guid equivalent</summary>
+            <param name="guid">ShortGuid</param>
+            <returns>Guid.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.op_Implicit(System.String)~K4os.Text.BaseX.ShortGuid">
+            <summary>Implicitly converts the string to a ShortGuid</summary>
+            <param name="text">String representation of Guid.</param>
+            <returns>ShortGuid.</returns>
+        </member>
+        <member name="M:K4os.Text.BaseX.ShortGuid.op_Implicit(System.Guid)~K4os.Text.BaseX.ShortGuid">
+            <summary>Implicitly converts the Guid to a ShortGuid</summary>
+            <param name="guid">Guid.</param>
+            <returns>ShortGuid</returns>
+        </member>
+    </members>
+</doc>

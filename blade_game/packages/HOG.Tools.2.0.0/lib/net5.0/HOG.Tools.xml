@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>HOG.Tools</name></assembly>
+<members>
+<member name="M:HOG.Tools.Physics.Vec.direction_to'(HOG.Tools.Physics.Vec)">
+<summary>
+ if the distance to b &gt; 1 then returns normalized direction, otherwise returns unnormalized direction (does not normalize the direction if it has length less than one)
+</summary>
+</member>
+</members>
+</doc>

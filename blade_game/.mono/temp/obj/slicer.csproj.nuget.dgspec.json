@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/vankata/documents/godot/slicer/slicer.csproj": {}
+  },
+  "projects": {
+    "/home/vankata/documents/godot/slicer/FSharpCode/FSharpCode.fsproj": {
+      "restore": {
+        "projectUniqueName": "/home/vankata/documents/godot/slicer/FSharpCode/FSharpCode.fsproj",
+        "projectName": "FSharpCode",
+        "projectPath": "/home/vankata/documents/godot/slicer/FSharpCode/FSharpCode.fsproj",
+        "packagesPath": "/home/vankata/.nuget/packages/",
+        "projectStyle": "PackagesConfig",
+        "configFilePaths": [
+          "/home/vankata/.config/NuGet/NuGet.Config"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        },
+        "packagesConfigPath": "/home/vankata/documents/godot/slicer/FSharpCode/packages.config"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "/home/vankata/documents/godot/slicer/slicer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/vankata/documents/godot/slicer/slicer.csproj",
+        "projectName": "slicer",
+        "projectPath": "/home/vankata/documents/godot/slicer/slicer.csproj",
+        "packagesPath": "/home/vankata/.nuget/packages/",
+        "outputPath": "/home/vankata/documents/godot/slicer/.mono/temp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/vankata/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "/home/vankata/documents/godot/slicer/FSharpCode/FSharpCode.fsproj": {
+                "projectPath": "/home/vankata/documents/godot/slicer/FSharpCode/FSharpCode.fsproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "runtimeIdentifierGraphPath": "/usr/lib/mono/msbuild/Current/bin/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

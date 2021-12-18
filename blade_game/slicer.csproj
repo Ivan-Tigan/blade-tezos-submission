@@ -1,0 +1,14 @@
+<Project Sdk="Godot.NET.Sdk/3.3.0">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="GamePrime\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="GamePrime\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="FSharpCode\FSharpCode.fsproj" />
+  </ItemGroup>
+</Project>

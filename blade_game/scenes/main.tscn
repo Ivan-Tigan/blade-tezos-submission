@@ -1,0 +1,1280 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://scripts/main.cs" type="Script" id=1]
+[ext_resource path="res://scenes/arena.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/fonts/IMMORTAL.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scenes/blade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://images/menu_screen_transparent_correct_size.png" type="Texture" id=6]
+[ext_resource path="res://images/grass.png" type="Texture" id=7]
+[ext_resource path="res://sounds/bensound-evolution.ogg" type="AudioStream" id=8]
+[ext_resource path="res://images/shadow.png" type="Texture" id=9]
+[ext_resource path="res://images/arrow.png" type="Texture" id=10]
+[ext_resource path="res://images/player/redcharacterbig.png" type="Texture" id=11]
+[ext_resource path="res://images/Tezos_logo.svg" type="Texture" id=12]
+[ext_resource path="res://resources/main.tres" type="Theme" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="Environment" id=15]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 165.0
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.46, 0.56, 6.99, 19.4, 19.7, 19.9, 20, 20.2, 20.4, 20.7, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 744.615, -353.666 ), Vector2( 744.615, -353.666 ), Vector2( 1077.61, 480.503 ), Vector2( 1077.61, 480.503 ), Vector2( 996.792, 305.399 ), Vector2( 1058.79, 259.399 ), Vector2( 1174.79, 189.399 ), Vector2( 1250.13, 208.066 ), Vector2( 1400.79, 245.399 ), Vector2( 1492.79, 299.399 ), Vector2( 1546.79, 399.399 ), Vector2( 1528.79, 525.399 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("blade:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.46, 0.56, 6.99, 19.4, 19.7, 19.9, 20, 20.2, 20.4, 20.7, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 65.1636, 65.1636, 65.1636, 65.1636, 56.4678, 67.8571, 76.1735, 90.2045, 118.266, 141.888, 171.851, 179.757 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blade2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.61, 3.73, 6.99, 19.4, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1993.12, -373.787 ), Vector2( 1993.12, -373.787 ), Vector2( 1525.58, 547.836 ), Vector2( 1525.58, 547.836 ), Vector2( 1605.67, 360.958 ), Vector2( 1533.67, 512.958 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("blade2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.61, 3.73, 6.99, 19.4, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -66.2513, -66.2513, -66.2513, -66.2513, -47.2165, -47.2165 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("blade3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6.78, 6.99, 19.4, 19.9, 20.3, 20.7, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 625.455, -221.747 ), Vector2( 625.455, -221.747 ), Vector2( 965.177, 730.148 ), Vector2( 911.784, 588.655 ), Vector2( 1049.04, 803.826 ), Vector2( 1251.78, 846.655 ), Vector2( 1443.24, 786.684 ), Vector2( 1527.91, 525.631 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blade3:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 6.78, 6.99, 19.4, 19.9, 20.3, 20.7, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 72.563, 72.563, 72.563, -5.5531, -51.5273, -88.3067, -131.721, -131.529 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("blade:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 19.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -11, -5 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("blade2:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 19.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -10, -6 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("blade3:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 19.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -9, -5 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("blade:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 21.07 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("blade3:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.1, 21.07 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("blade2:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 21.07 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("player/char/blades:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 21.07 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("player/char/blades/anim")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 21.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "rot", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("music_start")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec4 shadow_color = vec4(0., 0., 0., 0.5);
+uniform float shadow_angle = 1.7;
+uniform float shadow_offset = 0.312;
+uniform float widen = 0.586;
+uniform float distance_from_ground = 0.0;
+void fragment() {
+	vec4 original = texture(TEXTURE, UV);
+	vec2 shadow_uv = vec2( widen * (UV.x * (shadow_angle + UV.y) - shadow_offset), UV.y + distance_from_ground);
+	vec4 shadow = texture(TEXTURE, shadow_uv);
+	shadow.rgba = shadow_color * shadow.a;
+	COLOR = (original + shadow);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/shadow_color = Plane( 0, 0, 0, 0.5 )
+shader_param/shadow_angle = 1.7
+shader_param/shadow_offset = 0.304
+shader_param/widen = 0.586
+shader_param/distance_from_ground = 0.0
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("start/player/char/vpc")
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.172549, 0.164706, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.14902, 0.14902, 0.14902, 0.827451 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="GDScript" id=18]
+script/source = "extends LineEdit
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Input.is_action_just_pressed(\"debug\"):
+		visible = not visible
+#	pass
+"
+
+[sub_resource type="DynamicFont" id=10]
+size = 126
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxLine" id=11]
+color = Color( 1, 1, 1, 1 )
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id=12]
+color = Color( 0.215686, 0.917647, 0.933333, 1 )
+thickness = 4
+
+[sub_resource type="GDScript" id=13]
+script/source = "extends HSlider
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"music\"),linear2db(value))
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_option_button2_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"music\"),linear2db(value))
+	pass # Replace with function body.
+"
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("dots:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "..." ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "dots"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("dots:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ".", "..", "..." ]
+}
+
+[node name="main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="lobby" type="Node2D" parent="."]
+visible = false
+
+[node name="menu_screen_transparent_correct_size2" type="Sprite" parent="lobby"]
+position = Vector2( 959.153, 540.486 )
+texture = ExtResource( 6 )
+
+[node name="lfm2" type="Label" parent="lobby"]
+visible = false
+margin_left = 487.637
+margin_top = 910.666
+margin_right = 1471.64
+margin_bottom = 963.666
+theme = ExtResource( 15 )
+text = "]"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grid" type="GridContainer" parent="lobby"]
+margin_left = 874.0
+margin_top = 165.0
+margin_right = 1170.0
+margin_bottom = 1187.0
+custom_constants/hseparation = 102
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="lobby/grid"]
+margin_right = 114.0
+margin_bottom = 53.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name2" type="Label" parent="lobby/grid"]
+margin_top = 57.0
+margin_right = 114.0
+margin_bottom = 110.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name3" type="Label" parent="lobby/grid"]
+margin_top = 114.0
+margin_right = 114.0
+margin_bottom = 167.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name4" type="Label" parent="lobby/grid"]
+margin_top = 171.0
+margin_right = 114.0
+margin_bottom = 224.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name5" type="Label" parent="lobby/grid"]
+margin_top = 228.0
+margin_right = 114.0
+margin_bottom = 281.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name6" type="Label" parent="lobby/grid"]
+margin_top = 285.0
+margin_right = 114.0
+margin_bottom = 338.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name7" type="Label" parent="lobby/grid"]
+margin_top = 342.0
+margin_right = 114.0
+margin_bottom = 395.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name8" type="Label" parent="lobby/grid"]
+margin_top = 399.0
+margin_right = 114.0
+margin_bottom = 452.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name9" type="Label" parent="lobby/grid"]
+margin_top = 456.0
+margin_right = 114.0
+margin_bottom = 509.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name10" type="Label" parent="lobby/grid"]
+margin_top = 513.0
+margin_right = 114.0
+margin_bottom = 566.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name11" type="Label" parent="lobby/grid"]
+margin_top = 570.0
+margin_right = 114.0
+margin_bottom = 623.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name12" type="Label" parent="lobby/grid"]
+margin_top = 627.0
+margin_right = 114.0
+margin_bottom = 680.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name13" type="Label" parent="lobby/grid"]
+visible = false
+margin_top = 684.0
+margin_right = 114.0
+margin_bottom = 737.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name14" type="Label" parent="lobby/grid"]
+visible = false
+margin_top = 741.0
+margin_right = 114.0
+margin_bottom = 794.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name15" type="Label" parent="lobby/grid"]
+visible = false
+margin_top = 798.0
+margin_right = 114.0
+margin_bottom = 851.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name16" type="Label" parent="lobby/grid"]
+visible = false
+margin_top = 855.0
+margin_right = 114.0
+margin_bottom = 908.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name17" type="Label" parent="lobby/grid"]
+visible = false
+margin_top = 912.0
+margin_right = 114.0
+margin_bottom = 965.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name18" type="Label" parent="lobby/grid"]
+visible = false
+margin_top = 969.0
+margin_right = 114.0
+margin_bottom = 1022.0
+theme = ExtResource( 15 )
+text = "Pesho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_start" type="Button" parent="lobby"]
+margin_left = 727.569
+margin_top = 875.586
+margin_right = 911.568
+margin_bottom = 987.586
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Duel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_start2" type="Button" parent="lobby"]
+margin_left = 974.513
+margin_top = 875.586
+margin_right = 1158.51
+margin_bottom = 987.586
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "NoWalk"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="color_rect" type="ColorRect" parent="lobby"]
+margin_right = 1890.0
+margin_bottom = 60.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arena" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( -9.54225, 5.33936 )
+
+[node name="win" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="Panel" parent="win"]
+modulate = Color( 0, 0, 0, 0.843137 )
+margin_right = 1928.0
+margin_bottom = 1104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_start" type="Button" parent="win"]
+margin_left = 653.319
+margin_top = 944.459
+margin_right = 915.319
+margin_bottom = 1056.46
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_leave" type="Button" parent="win"]
+margin_left = 991.052
+margin_top = 944.459
+margin_right = 1175.05
+margin_bottom = 1056.46
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Leave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="result" type="RichTextLabel" parent="win"]
+margin_left = 56.0
+margin_top = 88.0
+margin_right = 1853.0
+margin_bottom = 996.0
+theme = ExtResource( 15 )
+bbcode_enabled = true
+bbcode_text = "[center]
+23 [img=66%]res://images/blade_logo.png[/img]; 50 [img=50%]res://images/Tezos_logo.png[/img]
+[/center]"
+text = "
+23 ; 50 
+"
+
+[node name="top_bar" type="PanelContainer" parent="."]
+margin_right = 1918.0
+margin_bottom = 62.0
+theme = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="top_bar"]
+margin_right = 1918.0
+margin_bottom = 62.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="info" type="Label" parent="top_bar/hbox"]
+margin_left = 688.0
+margin_top = 4.0
+margin_right = 872.0
+margin_bottom = 57.0
+theme = ExtResource( 15 )
+text = "Semifinal"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="matches" type="OptionButton" parent="top_bar/hbox"]
+margin_left = 897.0
+margin_right = 1229.0
+margin_bottom = 62.0
+size_flags_horizontal = 8
+text = "Pesho vs Gosho"
+items = [ "Pesho vs Gosho", null, false, 0, null, "Mircea vs Stan", null, false, 1, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_leave" type="Button" parent="top_bar"]
+margin_left = 1806.0
+margin_right = 1918.0
+margin_bottom = 62.0
+size_flags_horizontal = 8
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Leave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="world_environment" type="WorldEnvironment" parent="."]
+environment = SubResource( 15 )
+
+[node name="start" type="Node2D" parent="."]
+z_index = 408
+
+[node name="anim" type="AnimationPlayer" parent="start"]
+autoplay = "start"
+anims/start = SubResource( 1 )
+
+[node name="music_start" type="AudioStreamPlayer" parent="start"]
+stream = ExtResource( 8 )
+volume_db = -20.471
+bus = "music"
+
+[node name="polygon_2d" type="Polygon2D" parent="start"]
+visible = false
+z_index = -210
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -370.831, -215.024, 2581.83, -316.472, 2378.94, 1370.77, -429.564, 1370.77 )
+
+[node name="grass" type="Sprite" parent="start"]
+position = Vector2( 1155.29, 619.534 )
+z_index = -10
+texture = ExtResource( 7 )
+
+[node name="grass2" type="Sprite" parent="start"]
+position = Vector2( 1461.1, 736.574 )
+rotation = -0.290215
+z_index = -9
+texture = ExtResource( 7 )
+flip_h = true
+
+[node name="shadow" type="Sprite" parent="start"]
+position = Vector2( 1266.1, 657.289 )
+z_index = -9
+texture = ExtResource( 9 )
+
+[node name="grass3" type="Sprite" parent="start"]
+position = Vector2( 1023.14, 955.553 )
+rotation = 0.37745
+z_index = -8
+texture = ExtResource( 7 )
+
+[node name="blade" parent="start" instance=ExtResource( 5 )]
+position = Vector2( 744.615, -353.666 )
+rotation = 1.13732
+scale = Vector2( 1.5, 1.5 )
+z_index = -11
+
+[node name="blade2" parent="start" instance=ExtResource( 5 )]
+position = Vector2( 1993.12, -373.787 )
+rotation = -1.1563
+scale = Vector2( 1.5, 1.5 )
+z_index = -10
+
+[node name="blade3" parent="start" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 625.455, -221.747 )
+rotation = 1.26646
+scale = Vector2( 1.5, 1.5 )
+z_index = -9
+
+[node name="player" parent="start" instance=ExtResource( 3 )]
+position = Vector2( 1273, 522.648 )
+z_index = 0
+
+[node name="name" parent="start/player" index="0"]
+visible = false
+
+[node name="body" parent="start/player/char/vpc" index="0"]
+position = Vector2( 970.085, 540 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 11 )
+
+[node name="blades" parent="start/player/char" index="3"]
+visible = false
+z_index = -1
+
+[node name="blade" parent="start/player/char/blades/rot" index="0"]
+position = Vector2( 362, 0 )
+scale = Vector2( 2, 2 )
+
+[node name="blade" parent="start/player/char/blades/rot2" index="0"]
+position = Vector2( 362, 9.23872e-07 )
+scale = Vector2( 2, 2 )
+
+[node name="blade" parent="start/player/char/blades/rot3" index="0"]
+position = Vector2( 362, -9.23872e-07 )
+scale = Vector2( 2, 2 )
+
+[node name="rot4" parent="start/player/char/blades" index="3"]
+visible = false
+
+[node name="blade" parent="start/player/char/blades/rot4" index="0"]
+scale = Vector2( 2, 2 )
+
+[node name="rot5" parent="start/player/char/blades" index="4"]
+visible = false
+
+[node name="blade" parent="start/player/char/blades/rot5" index="0"]
+scale = Vector2( 2, 2 )
+
+[node name="anim" parent="start/player/char/blades" index="5"]
+autoplay = ""
+playback_speed = 0.01
+
+[node name="sprite" parent="start/player" index="2"]
+material = SubResource( 3 )
+use_parent_material = true
+position = Vector2( -4.49774, -1.32422 )
+z_index = -2
+texture = SubResource( 4 )
+
+[node name="btn_lblade" type="Button" parent="start"]
+visible = false
+margin_left = 1088.0
+margin_top = 384.0
+margin_right = 1181.0
+margin_bottom = 467.0
+theme = ExtResource( 15 )
+icon = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_rblade" type="Button" parent="start"]
+visible = false
+margin_left = 1408.0
+margin_top = 456.0
+margin_right = 1512.0
+margin_bottom = 533.0
+rect_rotation = -180.0
+theme = ExtResource( 15 )
+icon = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_lblade2" type="Button" parent="start"]
+visible = false
+margin_left = 1049.22
+margin_top = 488.261
+margin_right = 1153.22
+margin_bottom = 565.261
+theme = ExtResource( 15 )
+icon = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_rblade2" type="Button" parent="start"]
+visible = false
+margin_left = 1440.0
+margin_top = 560.0
+margin_right = 1544.0
+margin_bottom = 637.0
+rect_rotation = -180.0
+theme = ExtResource( 15 )
+icon = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price_blade" type="LineEdit" parent="start"]
+visible = false
+margin_left = 1476.0
+margin_top = 384.0
+margin_right = 1655.0
+margin_bottom = 458.0
+theme = ExtResource( 15 )
+custom_colors/font_color_uneditable = Color( 1, 1, 1, 0.913725 )
+custom_constants/minimum_spaces = 1
+custom_styles/read_only = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+text = "123"
+align = 1
+expand_to_text_length = true
+right_icon = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_buy_sell" type="Button" parent="start/price_blade"]
+margin_left = 195.0
+margin_top = 2.0
+margin_right = 305.0
+margin_bottom = 74.0
+theme = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price_blade2" type="LineEdit" parent="start"]
+visible = false
+margin_left = 1476.0
+margin_top = 494.0
+margin_right = 1655.0
+margin_bottom = 568.0
+theme = ExtResource( 15 )
+custom_colors/font_color_uneditable = Color( 1, 1, 1, 0.913725 )
+custom_constants/minimum_spaces = 1
+custom_styles/read_only = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+text = "5"
+align = 1
+expand_to_text_length = true
+right_icon = ExtResource( 12 )
+script = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_buy_sell" type="Button" parent="start/price_blade2"]
+margin_left = 195.0
+margin_top = 2.0
+margin_right = 305.0
+margin_bottom = 74.0
+theme = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price_char" type="LineEdit" parent="start"]
+visible = false
+margin_left = 1476.0
+margin_top = 588.0
+margin_right = 1655.0
+margin_bottom = 662.0
+theme = ExtResource( 15 )
+custom_colors/font_color_uneditable = Color( 1, 1, 1, 0.913725 )
+custom_constants/minimum_spaces = 1
+custom_styles/read_only = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+text = "123"
+align = 1
+expand_to_text_length = true
+right_icon = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_buy_sell" type="Button" parent="start/price_char"]
+margin_left = 195.0
+margin_top = 2.0
+margin_right = 305.0
+margin_bottom = 74.0
+theme = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_lchar" type="Button" parent="start"]
+visible = false
+margin_left = 1088.0
+margin_top = 592.0
+margin_right = 1169.0
+margin_bottom = 669.0
+theme = ExtResource( 15 )
+icon = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_rchar" type="Button" parent="start"]
+visible = false
+margin_left = 1424.0
+margin_top = 656.0
+margin_right = 1505.0
+margin_bottom = 733.0
+rect_rotation = -180.0
+theme = ExtResource( 15 )
+icon = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="LineEdit" parent="start"]
+margin_left = 128.0
+margin_top = 228.755
+margin_right = 378.006
+margin_bottom = 291.755
+theme = ExtResource( 15 )
+text = "Pesho"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hash" type="Label" parent="start/name"]
+margin_left = 256.0
+margin_top = 3.24493
+margin_right = 365.0
+margin_bottom = 56.2449
+text = "#"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tag" type="Label" parent="start/name"]
+margin_left = 280.0
+margin_top = 3.24493
+margin_right = 389.0
+margin_bottom = 56.2449
+text = "4315"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_start" type="Button" parent="start"]
+margin_left = 128.0
+margin_top = 307.842
+margin_right = 302.0
+margin_bottom = 375.842
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Duel"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_start2" type="Button" parent="start"]
+margin_left = 128.0
+margin_top = 381.632
+margin_right = 352.0
+margin_bottom = 449.632
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "NoWalk"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_host" type="Button" parent="start"]
+margin_left = 128.0
+margin_top = 455.126
+margin_right = 302.0
+margin_bottom = 527.126
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Host"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_shop" type="Button" parent="start"]
+margin_left = 128.0
+margin_top = 704.0
+margin_right = 302.0
+margin_bottom = 776.0
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Shop"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="Panel" parent="start"]
+margin_left = 128.0
+margin_top = 547.0
+margin_right = 512.0
+margin_bottom = 690.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_join" type="Button" parent="start"]
+margin_left = 176.0
+margin_top = 624.0
+margin_right = 292.0
+margin_bottom = 677.0
+rect_pivot_offset = Vector2( 1, 0 )
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_watch" type="Button" parent="start"]
+margin_left = 328.0
+margin_top = 624.0
+margin_right = 465.0
+margin_bottom = 677.0
+rect_pivot_offset = Vector2( 1, 0 )
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Watch"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="join_target" type="LineEdit" parent="start"]
+margin_left = 149.0
+margin_top = 564.0
+margin_right = 496.0
+margin_bottom = 627.0
+theme = ExtResource( 15 )
+placeholder_text = "Name#1234"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="start"]
+margin_left = 934.975
+margin_top = 34.395
+margin_right = 1570.97
+margin_bottom = 190.395
+theme = ExtResource( 15 )
+custom_fonts/font = SubResource( 10 )
+text = "Blade"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lfm" type="Label" parent="start"]
+margin_left = 24.0
+margin_top = 928.0
+margin_right = 699.0
+margin_bottom = 1037.0
+theme = ExtResource( 15 )
+text = "In Queue: Duel n/N
+In Queue: NoWalk n/N"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu_screen_transparent_correct_size" type="Sprite" parent="start"]
+visible = false
+position = Vector2( 959.153, 540.486 )
+texture = ExtResource( 6 )
+
+[node name="lmusic" type="Label" parent="start"]
+margin_left = 128.0
+margin_top = 796.0
+margin_right = 317.0
+margin_bottom = 849.0
+theme = ExtResource( 15 )
+text = "Music"
+
+[node name="option_button2" type="HSlider" parent="start"]
+margin_left = 297.0
+margin_top = 792.0
+margin_right = 512.0
+margin_bottom = 853.0
+custom_styles/slider = SubResource( 11 )
+custom_styles/grabber_area = SubResource( 12 )
+max_value = 1.0
+step = 0.01
+value = 0.6
+script = SubResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loading" type="Polygon2D" parent="."]
+visible = false
+z_index = 1263
+color = Color( 0, 0, 0, 0.862745 )
+polygon = PoolVector2Array( -96, -48, 2200, -88, 2128, 1360, -128, 1328 )
+
+[node name="hbox" type="HBoxContainer" parent="loading"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = 512.0
+margin_right = 1912.0
+margin_bottom = 565.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="txt" type="Label" parent="loading/hbox"]
+margin_left = 709.0
+margin_right = 1160.0
+margin_bottom = 53.0
+theme = ExtResource( 15 )
+text = "Processing Transaction"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dots" type="Label" parent="loading/hbox"]
+margin_left = 1164.0
+margin_right = 1194.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 30, 0 )
+theme = ExtResource( 15 )
+text = "..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animation_player" type="AnimationPlayer" parent="loading/hbox"]
+autoplay = "dots"
+anims/RESET = SubResource( 19 )
+anims/dots = SubResource( 20 )
+
+[connection signal="value_changed" from="start/option_button2" to="start/option_button2" method="_on_option_button2_value_changed"]
+
+[editable path="start/player"]

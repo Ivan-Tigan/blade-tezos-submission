@@ -1,0 +1,27 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "slicer", "slicer.csproj", "{4F2BF6BB-CEBC-487D-ACD7-14F5B92CFE90}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpCode", "FSharpCode\FSharpCode.fsproj", "{1ED974DB-6C6A-48FB-8EED-14291E02F866}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F2BF6BB-CEBC-487D-ACD7-14F5B92CFE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F2BF6BB-CEBC-487D-ACD7-14F5B92CFE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F2BF6BB-CEBC-487D-ACD7-14F5B92CFE90}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{4F2BF6BB-CEBC-487D-ACD7-14F5B92CFE90}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{4F2BF6BB-CEBC-487D-ACD7-14F5B92CFE90}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{4F2BF6BB-CEBC-487D-ACD7-14F5B92CFE90}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{1ED974DB-6C6A-48FB-8EED-14291E02F866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED974DB-6C6A-48FB-8EED-14291E02F866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED974DB-6C6A-48FB-8EED-14291E02F866}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED974DB-6C6A-48FB-8EED-14291E02F866}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED974DB-6C6A-48FB-8EED-14291E02F866}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED974DB-6C6A-48FB-8EED-14291E02F866}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal

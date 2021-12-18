@@ -1,0 +1,442 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://sounds/249819__spookymodem__magic-smite.wav" type="AudioStream" id=1]
+[ext_resource path="res://scenes/shockwave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/blade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/fonts/IMMORTAL.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sounds/Limb_Cut_off.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/Dodge_Dash.wav" type="AudioStream" id=6]
+[ext_resource path="res://images/player/bluecharacterbig.png" type="Texture" id=7]
+[ext_resource path="res://sounds/118792__lmbubec__1-knife-slash-a.wav" type="AudioStream" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="Shader" id=16]
+code = "shader_type canvas_item;
+
+uniform sampler2D dissolve_texture : hint_albedo;
+uniform float dissolve_value : hint_range(0,1);
+
+void fragment(){
+    vec4 main_texture = texture(TEXTURE, UV);
+    vec4 noise_texture = texture(dissolve_texture, UV);
+    main_texture.a *= floor(dissolve_value + min(1, noise_texture.x));
+    COLOR = main_texture;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=19]
+octaves = 9
+period = 36.8
+persistence = 0.713
+
+[sub_resource type="NoiseTexture" id=20]
+seamless = true
+noise = SubResource( 19 )
+
+[sub_resource type="ShaderMaterial" id=21]
+shader = SubResource( 16 )
+shader_param/dissolve_value = 1.0
+shader_param/dissolve_texture = SubResource( 20 )
+
+[sub_resource type="GDScript" id=22]
+script/source = "extends Sprite
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	material = material.duplicate()
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.0148148, 0.740741 )
+colors = PoolColorArray( 0.757812, 0.100647, 0.100647, 1, 0.462745, 0.223529, 0.223529, 0.694118 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.0352273 ), 0.0, 0.0, 0, 0, Vector2( 0.21519, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 140.0
+angular_velocity = 1440.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("vpc/body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 0, 1 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("vpc/body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "die"
+
+[sub_resource type="Animation" id=9]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("vpc/body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("vpc/body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=10]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("vpc/body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 4, 9 ]
+}
+
+[sub_resource type="Animation" id=11]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("rot3:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1440.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rot2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -720.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("rot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rot4:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -1800.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("rot5:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5040.0 ]
+}
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 shadow_color = vec4(0., 0., 0., 0.5);
+uniform float shadow_angle = 1.7;
+uniform float shadow_offset = 0.312;
+uniform float widen = 0.586;
+uniform float distance_from_ground = 0.0;
+void fragment() {
+	vec4 original = texture(TEXTURE, UV);
+	vec2 shadow_uv = vec2( widen * (UV.x * (shadow_angle + UV.y) - shadow_offset), UV.y + distance_from_ground);
+	vec4 shadow = texture(TEXTURE, shadow_uv);
+	shadow.rgba = shadow_color * shadow.a;
+	COLOR = (original + shadow);
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
+shader_param/shadow_color = Plane( 0, 0, 0, 0.5 )
+shader_param/shadow_angle = 1.7
+shader_param/shadow_offset = 0.272
+shader_param/widen = 0.586
+shader_param/distance_from_ground = 0.0
+
+[sub_resource type="ViewportTexture" id=14]
+viewport_path = NodePath("char/vpc")
+
+[sub_resource type="GDScript" id=15]
+script/source = "extends Timer
+
+
+onready var after_img = load(\"res://scenes/diseappearing_sprite.tscn\")
+export var spawning = false
+var modulation = Color.crimson
+ 
+func _on_after_image_spawner_timeout():
+	if spawning:
+		var i = after_img.instance()
+		add_child(i)
+		i.set_as_toplevel(true)
+		i.position = get_parent().global_position
+		var color = modulation
+		color = color * 0.7
+		color.a = 0.3
+		i.scale = get_node(\"../char/vpc/body\").scale
+		i.self_modulate = color
+		
+"
+
+[node name="player" type="Node2D"]
+z_index = 1
+
+[node name="name" type="Label" parent="."]
+margin_left = -178.593
+margin_top = -129.183
+margin_right = 194.407
+margin_bottom = -76.1831
+custom_colors/font_color = Color( 0.0980392, 1, 0.0235294, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "RaduMirceaAndrei"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="char" type="Node2D" parent="."]
+
+[node name="vpc" type="Viewport" parent="char"]
+size = Vector2( 1920, 1080 )
+own_world = true
+transparent_bg = true
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="body" type="Sprite" parent="char/vpc"]
+material = SubResource( 21 )
+position = Vector2( 960, 540 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 7 )
+offset = Vector2( 11.523, -17.4326 )
+hframes = 10
+frame = 6
+script = SubResource( 22 )
+
+[node name="corpse" type="Node2D" parent="char"]
+visible = false
+scale = Vector2( 0.4, 0.4 )
+z_index = 1
+
+[node name="top" type="Sprite" parent="char/corpse"]
+position = Vector2( -16.25, -152.318 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 1248, 54, 220, 163 )
+
+[node name="vfx_blood" type="Particles2D" parent="char/corpse/top"]
+position = Vector2( -21.7651, 52.7723 )
+z_index = -1
+emitting = false
+amount = 36
+lifetime = 2.0
+speed_scale = 1.5
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="bot" type="Sprite" parent="char/corpse"]
+position = Vector2( 0, 47.0902 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 1274, 204, 207, 255 )
+
+[node name="vfx_blood" type="Particles2D" parent="char/corpse/bot"]
+position = Vector2( -17.2387, -54.717 )
+rotation = 3.14159
+z_index = -1
+emitting = false
+amount = 24
+speed_scale = 1.5
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="anim" type="AnimationPlayer" parent="char"]
+autoplay = "idle"
+playback_speed = 1.5
+anims/attack = SubResource( 7 )
+anims/dash = SubResource( 8 )
+anims/die = SubResource( 18 )
+anims/idle = SubResource( 9 )
+anims/walk = SubResource( 10 )
+
+[node name="blades" type="Node2D" parent="char"]
+
+[node name="rot" type="Node2D" parent="char/blades"]
+scale = Vector2( 0.7, 0.7 )
+
+[node name="blade" parent="char/blades/rot" instance=ExtResource( 3 )]
+position = Vector2( 181, 0 )
+
+[node name="rot2" type="Node2D" parent="char/blades"]
+scale = Vector2( 0.7, 0.7 )
+
+[node name="blade" parent="char/blades/rot2" instance=ExtResource( 3 )]
+position = Vector2( 181, 9.23872e-07 )
+rotation = 2.31057
+
+[node name="rot3" type="Node2D" parent="char/blades"]
+scale = Vector2( 0.7, 0.7 )
+
+[node name="blade" parent="char/blades/rot3" instance=ExtResource( 3 )]
+position = Vector2( 181, -9.23872e-07 )
+rotation = -2.31057
+
+[node name="rot4" type="Node2D" parent="char/blades"]
+scale = Vector2( 0.7, 0.7 )
+
+[node name="blade" parent="char/blades/rot4" instance=ExtResource( 3 )]
+position = Vector2( 181, -9.23872e-07 )
+rotation = -2.31057
+
+[node name="rot5" type="Node2D" parent="char/blades"]
+scale = Vector2( 0.7, 0.7 )
+
+[node name="blade" parent="char/blades/rot5" instance=ExtResource( 3 )]
+position = Vector2( 181, -9.23872e-07 )
+rotation = -2.31057
+
+[node name="anim" type="AnimationPlayer" parent="char/blades"]
+autoplay = "rot"
+playback_speed = 0.05
+anims/rot = SubResource( 11 )
+
+[node name="sprite" type="Sprite" parent="."]
+material = SubResource( 13 )
+position = Vector2( 8.2045, -17 )
+texture = SubResource( 14 )
+
+[node name="line" type="Line2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.513726 )
+z_index = -1
+width = 5.0
+
+[node name="throw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="throw2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
+pitch_scale = 1.85
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[node name="dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="after_image_spawner" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+script = SubResource( 15 )
+
+[node name="shockwave" parent="." instance=ExtResource( 2 )]
+visible = false
+scale = Vector2( 10000, 10000 )
+z_index = 18
+
+[connection signal="timeout" from="after_image_spawner" to="after_image_spawner" method="_on_after_image_spawner_timeout"]

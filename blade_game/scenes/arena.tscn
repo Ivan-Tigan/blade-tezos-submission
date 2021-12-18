@@ -1,0 +1,158 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/blade.tscn" type="PackedScene" id=1]
+[ext_resource path="res://images/battleground.png" type="Texture" id=2]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/fonts/IMMORTAL.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sounds/Small-Call-Bell-Ding-2-www.fesliyanstudios.com.wav" type="AudioStream" id=5]
+[ext_resource path="res://scenes/point.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("vpc")
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.584314 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 42
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+PanelContainer/styles/panel = SubResource( 3 )
+
+[node name="arena" type="Node2D"]
+
+[node name="players" type="Node2D" parent="."]
+
+[node name="player2" parent="players" instance=ExtResource( 3 )]
+
+[node name="player" parent="players" instance=ExtResource( 3 )]
+
+[node name="vpc" type="Viewport" parent="."]
+size = Vector2( 1920, 1080 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+
+[node name="sprite2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 958.917, 545.384 )
+texture = SubResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 970.717, 535.163 )
+scale = Vector2( 1.04785, 1.04785 )
+z_index = -2
+texture = ExtResource( 2 )
+
+[node name="blades" type="Node2D" parent="."]
+
+[node name="blade" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+position = Vector2( 498.929, 192.768 )
+
+[node name="blade2" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade3" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade4" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade5" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade6" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade7" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade8" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade9" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="blade10" parent="blades" instance=ExtResource( 1 )]
+material = SubResource( 2 )
+
+[node name="countdown" type="Label" parent="."]
+margin_left = 471.923
+margin_top = 499.845
+margin_right = 1455.93
+margin_bottom = 552.845
+rect_pivot_offset = Vector2( 493.406, 50.6278 )
+theme = SubResource( 5 )
+text = "3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfx_tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 1.5
+
+[node name="scores" type="Node2D" parent="."]
+
+[node name="score" type="Node2D" parent="scores"]
+position = Vector2( 106.661, 1087.13 )
+
+[node name="point" parent="scores/score" instance=ExtResource( 6 )]
+visible = false
+
+[node name="point2" parent="scores/score" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 103.943, 0 )
+
+[node name="point3" parent="scores/score" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 202.217, 0 )
+
+[node name="point4" parent="scores/score" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 301.212, 0 )
+
+[node name="point5" parent="scores/score" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 404.45, 0 )
+
+[node name="score2" type="Node2D" parent="scores"]
+position = Vector2( 1431.86, 1087.13 )
+
+[node name="point5" parent="scores/score2" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 404.45, 0 )
+
+[node name="point4" parent="scores/score2" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 301.212, 0 )
+
+[node name="point3" parent="scores/score2" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 202.217, 0 )
+
+[node name="point2" parent="scores/score2" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 103.943, 0 )
+
+[node name="point" parent="scores/score2" instance=ExtResource( 6 )]
+visible = false
